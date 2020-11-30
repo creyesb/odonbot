@@ -1,0 +1,8 @@
+{
+  "name": "botServer",
+  "version": "0.0.1",
+  "description": "backend para el Chatbot",
+  "main": "index.js",
+  "author": "Cristian Reyes B",
+  "license": "MIT"
+}
