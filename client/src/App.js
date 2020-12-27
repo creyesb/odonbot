@@ -1,14 +1,31 @@
-import React from "react";
-import logo from "./assets/png/botlogo.png"
+import React from 'react';
 import './App.scss';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import routes from './config/routes';
+import AuthProvider from "./providers/AuthProviders";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>hola</h1>
-      </header>
-    </div>
+    <AuthProvider>
+      <Router>
+        <Switch>
+          {routes.map((route, index) => (
+            <RouterWithSubRoutes key={index} {...route} />
+          ))}
+        </Switch>
+      </Router>
+    </AuthProvider>
+  );
+}
+
+function RouterWithSubRoutes(route) {
+  //console.log(route);
+  return (
+
+    <Route
+      path={route.path}
+      exact={route.exact}
+      render={props => <route.component routes={route.routes} {...props} />}
+    />
   );
 }
 
