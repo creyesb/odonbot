@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import {Typography, Input, Row, Col, Button, Divider} from "antd";
-import {SendOutlined} from '@ant-design/icons';
+import {Typography, Input, Row, Col} from "antd";
+
 import "./Chatbot.scss";
 import axios from "axios/index";
 import Message from "./Message";
@@ -9,10 +9,11 @@ import Message from "./Message";
 
 class Chatbot extends Component {
     
-   
+   messagesEnd;
     constructor(props){
         super(props);
 
+        this._handleInputKeyPress=this._handleInputKeyPress.bind(this);
         this.state={
             message:[]
         }
@@ -20,17 +21,17 @@ class Chatbot extends Component {
 
     async df_text_query(text){
         let says={
-            speaks: "me",
-            msd:{
+            speaks: "",
+            msg:{
                 text:{
                     text:text
                 }
             }
         };
 
-        this.setState({message: [...this.state.messages, says]})
-        const res= await axios.post("/df-text-query", {text});
-        for (let msg of res.danta.fulfillmentMessages){
+        this.setState({messages: [...this.state.messages, says]})
+        const res= await axios.post("/api/v1/df-text-query", {text});
+        for (let msg of res.data.fulfillmentMessages){
                 says={
                     speaks:"bot",
                     msg:msg
@@ -45,7 +46,7 @@ class Chatbot extends Component {
 
         for (let msg of res.data.fulfillmentMessages){
             let says={
-                speaks:"me",
+                speaks:"bot",
                 msg:msg
             };
             this.setState({messages: [...this.state.message,says]});
@@ -53,8 +54,9 @@ class Chatbot extends Component {
         console.log(res);
     }
     componentDidMount(){
-        this.df_event_query("wellcome");
+        this.df_event_query("Bienvenidos");
     }
+
     renderMessages(stateMessages){
         if(stateMessages){
             return stateMessages.map((message,i)=>{
@@ -64,6 +66,19 @@ class Chatbot extends Component {
             return null;
         }
     }
+
+    _handleInputKeyPress(e){
+        if(e.key === "Enter"){
+            this.df_text_query(e.target.value);
+            e.target.value="";
+        }
+    }
+
+    
+
+    componentDidUpdate(){
+        this.messagesEnd.scrollIntoView({behavior:"smooth"});
+    }
     render(){
 
         return (
@@ -71,7 +86,7 @@ class Chatbot extends Component {
                     <Row>
                         <Col flex="auto">
                             <Typography className="chatbot__h4">
-                                <h5>Paciente: Carlos Tapia</h5>
+                                <h5>Paciente: Chatbot</h5>
                             </Typography>
                         </Col>
                         <div className="chatbot__h4" >
@@ -83,24 +98,26 @@ class Chatbot extends Component {
                         </div>
                     </Row>
                 <div className="chatbot">
-                <Divider />
                     <div className="chatbot__messagecontainter">
                         
-                        <Row >
-                            <Col span="21"> 
                             {this.renderMessages(this.state.messages)}
+                        <Row span="24">
+                            <Col span="24"> 
+                            <div ref = {(el)=>{this.messagesEnd=el;}}
+                                    syle={{
+                                    float:"left",
+                                    clear:"both"
+                                }}>
+                            </div>
                                 <Input 
+                                    className="chatbot__inputContainer"
+                                    onKeyDown={this._handleInputKeyPress}
                                     name="msg"
                                     type="text" 
                                     placeholder="Escribe tu mensaje aqui..." >
                                 </Input>
                             </Col>
-                            <Col span="3">
-                                <Button>
-                                    <SendOutlined/>
-                                </Button>
                             
-                            </Col>
                         </Row>
 
                     </div>

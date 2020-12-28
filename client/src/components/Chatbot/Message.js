@@ -1,21 +1,35 @@
 import React from "react";
-import {Col, Row, Card} from "antd";
-
-
+import {Col, Row, Avatar, Table} from "antd";
+import "./Message.scss";
+import logo from "../../assets/png/botlogo.png" ;
 export default function Message(props){
+
+    console.log(props.text);
+    
     return(
-        <div>
-       <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-           <Card width="300px">
-                <Col className="gutter-row" span={6}>
-                    
-                </Col>
-                <Col className="gutter-row" span={6}>
-                    
-                </Col>
-               
-           </Card>
-        </Row> 
+        
+    <div className="scrollable-container"  >
+        
+
+        <Col scroll={{ x: 100, y: 200 }}>
+            <div className="msg" >
+                    <Row >
+                        {props.speaks==="bot" &&
+                        <Col span="4">
+                            <Avatar src={logo} />
+                            {props.speaks}
+                        </Col>
+                        }
+                        <Col span="20" className="secondColumn"> {props.text} </Col>
+                        {props.speaks==="" &&
+                        <Col className="thirdCol">
+                            <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                            {props.speaks}
+                        </Col>
+                        }
+                    </Row>
+            </div>
+        </Col> 
     </div>
     );
 
