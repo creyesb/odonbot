@@ -1,0 +1,28 @@
+@import "../../scss/index.scss";
+.listapaciente {
+  height: 55vh;
+  overflow-y: auto;
+  &__switch {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+
+    > button {
+      margin-right: 20px;
+    }
+    &__switchButton {
+      align-items: right;
+      left: 10;
+    }
+  }
+
+  .pacienteActivo {
+    background-color: rgba(255, 255, 255, 0.762);
+    padding: 10px 15px;
+  }
+}
+
+.listaDePacientes {
+}

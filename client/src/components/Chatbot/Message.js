@@ -1,5 +1,5 @@
 import React from "react";
-import {Col, Row, Avatar, Table} from "antd";
+import {Col, Row, Avatar} from "antd";
 import "./Message.scss";
 import logo from "../../assets/png/botlogo.png" ;
 export default function Message(props){

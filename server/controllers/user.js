@@ -55,6 +55,7 @@ function signIn(req, res) {
     const params = req.body;
     const email = params.email.toLowerCase();
     const password = params.password;
+    
 
     User.findOne({ email }, (err, userStored) => {
         if (err) {
@@ -68,7 +69,7 @@ function signIn(req, res) {
                     if (err) {
                         res.status(500).send({ message: "Error del servidor" });
                     } else if (!check) {
-                        res.status(404).send({ message: "la contraseña es incorrecta" });
+                        res.status(404).send({ message: "La contraseña es incorrecta" });
                     } else {
                         if (!userStored.usrState) {
                             res
@@ -87,8 +88,14 @@ function signIn(req, res) {
         }
     })
 };
+function rolEstudiante(req, res){
+    const params = req.body;
+   // const {rol} = params.rol;
+    console.log(params.rol);
 
+};
 module.exports = {
     signUp,
-    signIn
+    signIn,
+    rolEstudiante
 };

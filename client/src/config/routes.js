@@ -12,6 +12,8 @@ import Registro from "../components/RegistroPage/Registro";
 import LogInForm from "../components/LogInForm/LogInForm";
 import PerfilEstudiante from "../components/PerfilEstudiante/PerfilEstudiante";
 import Chat from "../pages/Chat/Chat";
+import Solicitudes from "../components/Solicitudes/Solicitudes";
+import Paciente from "../components/Paciente/Paciente";
 const routes = [
 
     {
@@ -23,13 +25,18 @@ const routes = [
                 path: "/profesor",
                 component: HomeProfesor,
                 exact: true
-            },/*
+            },
             {
-                path: "/profesor/login",
-                component: MainLogin,
+                path: "/profesor/solicitudes",
+                component: Solicitudes,
+                exact: true
+            },
+            {
+                path: "/profesor/pacientes",
+                component: Paciente,
                 exact: true
             }
-            ,*/
+            ,
             {
                 component: Error
             }

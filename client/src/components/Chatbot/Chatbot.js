@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import {Typography, Input, Row, Col} from "antd";
+import {Typography, Input, Row, Col, Statistic} from "antd";
 
 import "./Chatbot.scss";
 import axios from "axios/index";
 import Message from "./Message";
+const { Countdown } = Statistic;
 
+const deadline = Date.now() + 1000 * 60 * 60 * 10 * 2 + 1000 * 0; // Moment is also OK
 
 
 class Chatbot extends Component {
@@ -90,11 +92,14 @@ class Chatbot extends Component {
                             </Typography>
                         </Col>
                         <div className="chatbot__h4" >
-                            <Col flex="120px" >
-                                <Typography className="chatbot__tiempo">
-                                    <h5> Tiempo: 20m </h5>
+                            <Col >
+                            <Col span={4}>
+                                <Countdown title="Tiempo" value={deadline} />
+                            </Col>
+                                <Typography >
+                                
                                 </Typography>
-                        </Col>
+                            </Col>
                         </div>
                     </Row>
                 <div className="chatbot">
@@ -109,6 +114,7 @@ class Chatbot extends Component {
                                     clear:"both"
                                 }}>
                             </div>
+                          
                                 <Input 
                                     className="chatbot__inputContainer"
                                     onKeyDown={this._handleInputKeyPress}

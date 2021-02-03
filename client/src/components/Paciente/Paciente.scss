@@ -1,0 +1,29 @@
+@import "../../scss/index.scss";
+.paciente {
+  &__typo {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
+    text-align: center;
+    padding-top: 40px;
+    font-size: xx-large;
+    font-weight: 300;
+  }
+
+  &__addButton {
+    max-width: 50px;
+    margin-left: auto;
+    margin-right: 20px;
+    position: relative;
+
+    &__button {
+      size: "large";
+    }
+  }
+  &__formlist {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

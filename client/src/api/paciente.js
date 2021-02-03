@@ -1,7 +1,7 @@
 import { basePath, apiVersion } from "./config";
 
-export function signUpApi(data) {
-  const url = `${basePath}/${apiVersion}/sign-up`;
+export function crearPaciente(data) {
+  const url = `${basePath}/${apiVersion}/crearPaciente`;
   const params = {
     method: "POST",
     body: JSON.stringify(data),
@@ -15,10 +15,10 @@ export function signUpApi(data) {
       return response.json();
     })
     .then((result) => {
-      if (result.user) {
+      if (result.paciente) {
         return {
           status: 200,
-          message: "Usuario creado con éxito",
+          message: "Paciente creado con éxito",
         };
       }
       return {
@@ -34,22 +34,41 @@ export function signUpApi(data) {
     });
 }
 
-export function signInApi(data) {
-  const url = `${basePath}/${apiVersion}/sign-in`;
+export function getPaciente(data) {
+  const url = `${basePath}/${apiVersion}/getPaciente`;
   const params = {
-    method: "POST",
-    body: JSON.stringify(data),
+    method: "GET",
+    //body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
     },
   };
-
+  // console.log(params);
   return fetch(url, params)
     .then((response) => {
       return response.json();
     })
     .then((result) => {
-      console.log(result);
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+export function getPacienteByState(pacienteState) {
+  const url = `${basePath}/${apiVersion}/getPacienteByState?pacienteState=${pacienteState}`;
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  // console.log(params);
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
       return result;
     })
     .catch((err) => {
