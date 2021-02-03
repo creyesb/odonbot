@@ -10,10 +10,10 @@ function Solicitudes() {
   const [pacienteInactivo, setPacienteInactivo] = useState([]);
 
   useEffect(() => {
-    getPacienteByState(0).then((response) => {
+    getPacienteByState(1).then((response) => {
       setPacienteActivo(response.paciente);
     });
-    getPacienteByState(1).then((response) => {
+    getPacienteByState(0).then((response) => {
       setPacienteInactivo(response.paciente);
     });
   }, []);
@@ -25,8 +25,8 @@ function Solicitudes() {
         <FormularioPacinte />
         <br></br>
         <ListaPaciente
-          pacienteInactivo={pacienteInactivo}
           pacienteActivo={pacienteActivo}
+          pacienteInactivo={pacienteInactivo}
         />
       </div>
 

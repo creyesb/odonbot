@@ -14,7 +14,7 @@ export default function ListaPaciente(props) {
   const [paciente, setPaciente] = useState([]);
   const { pacienteActivo, pacienteInactivo } = props;
 
-  const [viewPacienteActivo, setViewPacienteActivo] = useState(true);
+  const [viewPacienteActivo, setViewPacienteActivo] = useState(false);
   //Estados para el modal
   /*Estado para mostrar/ocultar estado */
   const [isModalVisible, setisModalVisible] = useState(false);
@@ -46,7 +46,7 @@ export default function ListaPaciente(props) {
           onChange={() => setViewPacienteActivo(!viewPacienteActivo)}
         />
         <span>
-          {viewPacienteActivo ? "Usuarios Activos" : "Usuarios Inactivos"}
+          {viewPacienteActivo ? "Usuarios Inactivos" : "Usuarios Activos "}
         </span>
       </div>
       {viewPacienteActivo ? (
