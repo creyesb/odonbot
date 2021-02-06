@@ -10,10 +10,10 @@ function Solicitudes() {
   const [pacienteInactivo, setPacienteInactivo] = useState([]);
 
   useEffect(() => {
-    getPacienteByState(1).then((response) => {
+    getPacienteByState(0).then((response) => {
       setPacienteActivo(response.paciente);
     });
-    getPacienteByState(0).then((response) => {
+    getPacienteByState(1).then((response) => {
       setPacienteInactivo(response.paciente);
     });
   }, []);

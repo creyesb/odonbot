@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Input, notification, Modal, Radio, Select } from "antd";
+import { Button, Form, Input, notification, Modal, Radio } from "antd";
 import {
   UserOutlined,
   IdcardOutlined,
@@ -8,7 +8,7 @@ import {
 
 import { crearPaciente } from "../../api/paciente";
 import "./FormularioPaciente.scss";
-const { Option } = Select;
+
 const { TextArea } = Input;
 
 function FormularioPacinte() {

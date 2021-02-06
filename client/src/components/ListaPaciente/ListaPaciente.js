@@ -13,11 +13,11 @@ import FormEditPaciente from "../FormularioEditarPaciente/FormEditPaciente";
 export default function ListaPaciente(props) {
   const [paciente, setPaciente] = useState([]);
   const { pacienteActivo, pacienteInactivo } = props;
-
+  /* Para mostrar los pacientes activos/inactivos*/
   const [viewPacienteActivo, setViewPacienteActivo] = useState(false);
   //Estados para el modal
   /*Estado para mostrar/ocultar estado */
-  const [isModalVisible, setisModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   /* texto del titulo del modal ej: nombre del paciente*/
   const [modalTitle, setModalTitle] = useState("");
   /* Estado para el contenido del modal */
@@ -29,14 +29,6 @@ export default function ListaPaciente(props) {
     });
   }, []);
 
-  const editPaciente = (paciente) => {
-    setisModalVisible(true);
-    setModalTitle(`Editar ${paciente.nombrePaciente}`);
-    setModalContent(<FormEditPaciente paciente={paciente} />);
-
-    //setModalContent("Formulario de paciente");
-    console.log({ paciente });
-  };
   return (
     <div className="listapaciente">
       <div className="listapaciente__switch">
@@ -50,15 +42,27 @@ export default function ListaPaciente(props) {
         </span>
       </div>
       {viewPacienteActivo ? (
-        <PacienteActivos pacienteActivo={pacienteActivo} />
+        <PacienteActivos
+          pacienteActivo={pacienteActivo}
+          isModalVisible={isModalVisible}
+          setModalContent={setModalContent}
+          setModalTitle={setModalTitle}
+          setIsModalVisible={setIsModalVisible}
+        />
       ) : (
-        <PacienteInactivos pacienteInactivo={pacienteInactivo} />
+        <PacienteInactivos
+          pacienteInactivo={pacienteInactivo}
+          isModalVisible={isModalVisible}
+          setModalContent={setModalContent}
+          setModalTitle={setModalTitle}
+          setIsModalVisible={setIsModalVisible}
+        />
       )}
 
       <ModalForm
         title={modalTitle}
         isVisible={isModalVisible}
-        setIsVisible={setisModalVisible}
+        setIsVisible={setIsModalVisible}
       >
         {modalContent}
       </ModalForm>
@@ -67,7 +71,22 @@ export default function ListaPaciente(props) {
 }
 
 function PacienteActivos(props) {
-  const { pacienteActivo } = props;
+  const {
+    pacienteActivo,
+    setModalContent,
+    setModalTitle,
+    setIsModalVisible,
+  } = props;
+
+  const editPaciente = (paciente) => {
+    setIsModalVisible(true);
+    setModalTitle(`Editar ${paciente.nombrePaciente}`);
+    setModalContent(<FormEditPaciente paciente={paciente} />);
+
+    //setModalContent("Formulario de paciente");
+    console.log({ paciente });
+  };
+
   return (
     <div>
       <List
@@ -85,7 +104,7 @@ function PacienteActivos(props) {
               <Button
                 icon={<EditOutlined />}
                 type="primary"
-                onClick={() => console.log("Editar")}
+                onClick={() => editPaciente(item)}
               ></Button>,
               <Button
                 icon={<DeleteOutlined />}
@@ -108,7 +127,21 @@ function PacienteActivos(props) {
   );
 }
 function PacienteInactivos(props) {
-  const { pacienteInactivo } = props;
+  const {
+    pacienteInactivo,
+    setModalContent,
+    setModalTitle,
+    setIsModalVisible,
+  } = props;
+
+  const editPaciente = (paciente) => {
+    setIsModalVisible(true);
+    setModalTitle(`Editar ${paciente.nombrePaciente}`);
+    setModalContent(<FormEditPaciente paciente={paciente} />);
+
+    //setModalContent("Formulario de paciente");
+    console.log({ paciente });
+  };
   return (
     <div>
       <List
@@ -120,13 +153,13 @@ function PacienteInactivos(props) {
             actions={[
               <Button
                 icon={<UserSwitchOutlined />}
-                type="dashed"
+                type="default"
                 onClick={() => console.log("Desactivar")}
               ></Button>,
               <Button
                 icon={<EditOutlined />}
                 type="primary"
-                onClick={() => console.log("Editar")}
+                onClick={() => editPaciente(item)}
               ></Button>,
               <Button
                 icon={<DeleteOutlined />}

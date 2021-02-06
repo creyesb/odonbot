@@ -61,11 +61,28 @@ const query= req.query;
 
 };
 
-
+function updatePaciente(req, res){
+    //const query= req.query;
+    const pacienteData= req.body;
+    const params = req.params;
+    
+    Paciente.findByIdAndUpdate( {_id:params.id}, pacienteData, (err, pacienteUpdate) => {
+        if(err){
+            res.status(500).send({message:"Error en el servidor"});
+        }else {
+            if(!pacienteUpdate){
+                res.status(404).send({message:"No se ha encontrado usuario"});
+            }else{
+                res.status(200).send({message:"usuario actualizado correctamente"});
+            }
+        }
+    });
+    
+}
 
 module.exports = {
     crearPaciente,
     getPaciente,
     getPacienteByState,
- 
+    updatePaciente
 };

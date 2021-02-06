@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Button, Form, Typography, Select, Col, Row, Input } from "antd";
+import React, { useState, useEffect } from "react";
+import { Button, Form, Select, Col, Row, Input, notification } from "antd";
 import { UserAddOutlined } from "@ant-design/icons";
 import "./FormEditPaciente.scss";
+import { updatePacienteAPI } from "../../api/paciente";
+const { TextArea } = Input;
 
 export default function FormEditPaciente(props) {
-  const { paciente, ...rest } = props;
+  const { paciente } = props;
   const [dataPaciente, setDataPaciente] = useState({
     nombrePaciente: paciente.nombrePaciente,
     edad: paciente.edad,
@@ -16,19 +18,19 @@ export default function FormEditPaciente(props) {
     pacienteState: paciente.pacienteState,
   });
 
-  const updateDataPaciente = (e) => {
-    console.log(dataPaciente);
-    e.preventDefault();
+  const updateDataPaciente = () => {
+    const pacienteUpdate = dataPaciente;
+
+    updatePacienteAPI(pacienteUpdate, paciente._id).then((result) => {
+      notification["success"]({
+        message: Response.message,
+      });
+    });
   };
 
   return (
     <div>
-      <Typography>
-        <h4> Formulario Editar Paciente</h4>
-      </Typography>
-      <h2> {paciente.nombrePaciente}</h2>
       <EditForm
-        {...rest}
         paciente={paciente}
         dataPaciente={dataPaciente}
         setDataPaciente={setDataPaciente}
@@ -39,52 +41,169 @@ export default function FormEditPaciente(props) {
 }
 
 function EditForm(props) {
-  const { dataPaciente, setDataPaciente, updateDataPaciente, ...rest } = props;
+  const { dataPaciente, setDataPaciente, updateDataPaciente, paciente } = props;
   const { Option } = Select;
   return (
     <div>
-      <Form className="form-edit" onSubmit={updateDataPaciente}>
+      <Form className="form-edit" onFinish={updateDataPaciente}>
         <Row gutter={24}>
           <Col span={24}>
             <Form.Item>
               <label>Nombre Paciente</label>
               <Input
-                {...rest}
                 placeholder="Nombre paciente"
+                value={dataPaciente.nombrePaciente}
                 type="text"
                 name="nombrePaciente"
                 icon={<UserAddOutlined />}
-                //dafaultValue={dataPaciente.nombrePaciente}
                 onChange={(e) =>
                   setDataPaciente({
                     ...dataPaciente,
                     nombrePaciente: e.target.value,
                   })
                 }
-                {...rest}
               />
             </Form.Item>
           </Col>
-          <Col span={24}></Col>
         </Row>
         <Row gutter={24}>
-          <Col span={24}></Col>
-          <Col span={24}></Col>
+          <Col span={8}>
+            <Form.Item>
+              <label>Peso</label>
+              <Input
+                placeholder="Edad"
+                value={dataPaciente.peso}
+                type="text"
+                name="peso"
+                icon={<UserAddOutlined />}
+                onChange={(e) =>
+                  setDataPaciente({
+                    ...dataPaciente,
+                    peso: e.target.value,
+                  })
+                }
+              />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <Form.Item>
+              <label>Edad</label>
+              <Input
+                value={dataPaciente.edad}
+                type="text"
+                name="edad"
+                icon={<UserAddOutlined />}
+                onChange={(e) =>
+                  setDataPaciente({
+                    ...dataPaciente,
+                    edad: e.target.value,
+                  })
+                }
+              />
+            </Form.Item>
+          </Col>
+          <Col span={8}>
+            <label>Estado</label>
+            <Select
+              style={{ width: 120 }}
+              placeholder="Estado"
+              onChange={(e) =>
+                setDataPaciente({ ...dataPaciente, pacienteState: e })
+              }
+              value={dataPaciente.pacienteState ? "Activo" : "Inactivo"}
+            >
+              <Option value="1">Activo</Option>
+              <Option value="0">Inactivo</Option>
+            </Select>
+          </Col>
+        </Row>
+
+        <Row gutter={24}>
+          <Col span={24}>
+            <Form.Item>
+              <label>Sintomas</label>
+              <TextArea
+                rows={2}
+                value={dataPaciente.sintomas}
+                type="text"
+                name="sintomas"
+                icon={<UserAddOutlined />}
+                onChange={(e) =>
+                  setDataPaciente({
+                    ...dataPaciente,
+                    sintomas: e.target.value,
+                  })
+                }
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+
+        <Row gutter={24}>
+          <Col span={24}>
+            <Form.Item>
+              <label>Motivo de Consulta</label>
+              <TextArea
+                rows={2}
+                value={dataPaciente.motivoConsulta}
+                type="text"
+                name="motivoConsulta"
+                icon={<UserAddOutlined />}
+                onChange={(e) =>
+                  setDataPaciente({
+                    ...dataPaciente,
+                    motivoConsulta: e.target.value,
+                  })
+                }
+              />
+            </Form.Item>
+          </Col>
         </Row>
         <Row gutter={24}>
-          <Col span={24}></Col>
-          <Col span={24}></Col>
+          <Col span={24}>
+            <Form.Item>
+              <label>Enfermedad base</label>
+              <TextArea
+                rows={2}
+                placeholder="Enfermedad base"
+                value={dataPaciente.enfermedadBase}
+                type="text"
+                name="enfermedadBase"
+                icon={<UserAddOutlined />}
+                onChange={(e) =>
+                  setDataPaciente({
+                    ...dataPaciente,
+                    enfermedadBase: e.target.value,
+                  })
+                }
+              />
+            </Form.Item>
+          </Col>
         </Row>
-        <Form.Item>
-          <Button
-            type="primary"
-            shape="round"
-            htmlType="submit"
-            className="paciente__addButton__button"
-          >
-            Actualizar datos
-          </Button>
-        </Form.Item>
+        <Row gutter={24}>
+          <Col span={24}>
+            <Form.Item>
+              <label>Hábitos</label>
+              <TextArea
+                rows={2}
+                placeholder="hábitos"
+                value={dataPaciente.habitos}
+                type="text"
+                name="habitos"
+                icon={<UserAddOutlined />}
+                onChange={(e) =>
+                  setDataPaciente({
+                    ...dataPaciente,
+                    habitos: e.target.value,
+                  })
+                }
+              />
+            </Form.Item>
+          </Col>
+        </Row>
+        <Button type="primary" htmlType="submit">
+          Actualizar datos
+        </Button>
       </Form>
     </div>
   );
