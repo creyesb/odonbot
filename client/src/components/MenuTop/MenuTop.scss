@@ -1,0 +1,45 @@
+@import "../../scss/index.scss";
+
+.menu-top {
+  position: fixed;
+  width: 100%;
+
+  button {
+    color: $font-light;
+    font-size: 20px;
+
+    &:hover {
+      color: $secundary-color-accent;
+    }
+
+    &:focus,
+    &:active {
+      color: $font-light;
+    }
+  }
+
+  &__left {
+    position: fixed;
+
+    &-logo {
+      position: absolute;
+      width: 65px;
+      padding: 0 10px;
+      left: -50px;
+      top: 8px;
+    }
+  }
+
+  &__right {
+    position: absolute;
+    right: 60px;
+  }
+  &__logoName {
+    color: white;
+    font-weight: 400;
+  }
+
+  &__col {
+    padding-right: 7px;
+  }
+}

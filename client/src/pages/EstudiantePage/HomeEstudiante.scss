@@ -1,0 +1,36 @@
+@import "../../scss/index.scss";
+.homeEstudiante {
+  padding-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+  height: 80vh;
+  overflow-y: auto;
+
+  &__typo {
+    padding-bottom: 30px;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    font-size: xx-large;
+    font-weight: 300;
+  }
+}
+.site-calendar-demo-card {
+  max-width: 300px;
+  border: 1px solid #f0f0f0;
+  border-radius: 2px;
+}
+
+.stepsconf {
+  padding-top: 30px;
+  width: 400px;
+}
+
+.steps-content {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+body {
+  z-index: 2;
+}

@@ -1,0 +1,44 @@
+@import "../../scss/index.scss";
+.chatbotContainer {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.chatbot {
+  position: relative;
+  border: 1px solid $font-grey;
+  background-color: $font-light;
+  border-radius: 3px;
+  height: 500px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: scroll;
+  &__h4 {
+    font-weight: lighter;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+  &__messagecontainter {
+    top: 5px;
+    height: 400px;
+    max-width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding: 0 10px;
+    bottom: -100px;
+  }
+  &__inputContainer {
+    position: sticky;
+    bottom: -200px;
+  }
+  &__tiempo {
+    background-color: $font-grey-light;
+    border-radius: 4px;
+    width: 20px;
+    text-align: center;
+  }
+}
