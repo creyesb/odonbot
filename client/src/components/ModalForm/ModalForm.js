@@ -10,9 +10,7 @@ export default function ModalForm(props) {
       centered
       visible={isVisible}
       onCancel={() => setIsVisible(false)}
-      //footer={false}
-      okText="Actualizar"
-      cancelText="Cancelar"
+      footer={false}
     >
       {children}
     </Modal>

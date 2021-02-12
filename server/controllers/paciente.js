@@ -20,7 +20,7 @@ function crearPaciente(req, res) {
 
     paciente.save((err, pacienteStored) => {
         if (err) {
-            res.status(500).send({ message: "Paciente ya registrado" });
+            res.status(500).send({ message: "Paciente ya registrado." });
         } else {
             if (!pacienteStored) {
                 res.status(404).send({ message: "Error en registrar usuario" });
@@ -52,7 +52,7 @@ const query= req.query;
         
         if(!paciente){
             res.status(404).send({
-                message:"No se ha encotrado usuarios"
+                message:"No se han encotrado usuarios."
             });
         }else{
             res.status(200).send({paciente});
@@ -68,12 +68,12 @@ function updatePaciente(req, res){
     
     Paciente.findByIdAndUpdate( {_id:params.id}, pacienteData, (err, pacienteUpdate) => {
         if(err){
-            res.status(500).send({message:"Error en el servidor"});
+            res.status(500).send({message:"Error en el servidor."});
         }else {
             if(!pacienteUpdate){
-                res.status(404).send({message:"No se ha encontrado usuario"});
+                res.status(404).send({message:"No se ha encontrado usuario."});
             }else{
-                res.status(200).send({message:"usuario actualizado correctamente"});
+                res.status(200).send({message:"Usuario actualizado correctamente."});
             }
         }
     });

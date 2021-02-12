@@ -23,7 +23,7 @@ export default function FormEditPaciente(props) {
 
     updatePacienteAPI(pacienteUpdate, paciente._id).then((result) => {
       notification["success"]({
-        message: Response.message,
+        message: result.message,
       });
     });
   };

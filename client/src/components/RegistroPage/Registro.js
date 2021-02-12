@@ -100,8 +100,8 @@ function Registro() {
           notification["success"]({
             message: result.message,
           });
-          resetForm();
         }
+        resetForm();
       }
     }
   };
