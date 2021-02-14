@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Upload, Typography, Input, Form, Button, Divider } from "antd";
 import useAuth from "../../hooks/useAuth";
 import "./PerfilEstudiante.scss";
@@ -12,7 +12,7 @@ import {
 const { Dragger } = Upload;
 
 export default function PerfilEstudiante(props) {
-  const { user, isLoading } = useAuth();
+  const { user } = useAuth();
 
   /*const [dataUser, setDataUser] = useState({
     nombre: user.nombre,
@@ -26,7 +26,7 @@ export default function PerfilEstudiante(props) {
     usrState: user.userState,
   });*/
 
-  console.log(user);
+  //console.log(user);
   return (
     <div className="main">
       <div className="formbox">
@@ -35,7 +35,7 @@ export default function PerfilEstudiante(props) {
         <div className="formbox__innerContainer">
           <Form className="registerForm">
             <Typography>
-              <h3>Datos del estudiante</h3>
+              <h3>Datos del {user.rol ? "Profesor" : "Estudiante"}</h3>
             </Typography>
             <Form.Item>
               <label>Nombre</label>

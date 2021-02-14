@@ -20,7 +20,7 @@ export default function AuthProvider(props) {
   useEffect(() => {
     checkUserLogin(setUser);
   }, []);
-  console.log(user);
+
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 }
 

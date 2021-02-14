@@ -6,6 +6,7 @@ import MenuTop from "../components/MenuTop";
 import useAuth from "../hooks/useAuth";
 import "./LayoutEstudiante.scss";
 import LogInForm from "../components/LogInForm/LogInForm";
+import LayoutProfesor from "../layout/LayoutProfesor";
 //import MainLogin from "../pages/MainLogin";
 
 export default function LayoutEstudiante(props) {
@@ -16,9 +17,6 @@ export default function LayoutEstudiante(props) {
 
   const { user, isLoading } = useAuth();
 
-  /* console.log(user);
-    console.log(isLoading);
-   */
   if (!user && !isLoading) {
     return (
       <>
@@ -27,7 +25,9 @@ export default function LayoutEstudiante(props) {
       </>
     );
   }
+
   if (user && !isLoading) {
+    console.log(user.rol);
     return (
       <Layout>
         <MenuSider menuCollapsed={menuCollapsed} />
@@ -53,6 +53,7 @@ export default function LayoutEstudiante(props) {
       </Layout>
     );
   }
+
   return null;
 }
 

@@ -15,84 +15,83 @@ import Chat from "../pages/Chat/Chat";
 import Solicitudes from "../components/Solicitudes/Solicitudes";
 import Paciente from "../components/Paciente/Paciente";
 const routes = [
-
-    {
+  {
+    path: "/profesor",
+    component: LayoutProfesor,
+    exact: false,
+    routes: [
+      {
         path: "/profesor",
-        component: LayoutProfesor,
-        exact: false,
-        routes: [
-            {
-                path: "/profesor",
-                component: HomeProfesor,
-                exact: true
-            },
-            {
-                path: "/profesor/solicitudes",
-                component: Solicitudes,
-                exact: true
-            },
-            {
-                path: "/profesor/pacientes",
-                component: Paciente,
-                exact: true
-            }
-            ,
-            {
-                component: Error
-            }
-        ]
-
-    },
-    {
+        component: HomeProfesor,
+        exact: true,
+      },
+      {
+        path: "/profesor/solicitudes",
+        component: Solicitudes,
+        exact: true,
+      },
+      {
+        path: "/profesor/pacientes",
+        component: Paciente,
+        exact: true,
+      },
+      {
+        path: "/profesor/perfil",
+        component: PerfilEstudiante,
+        exact: true,
+      },
+      {
+        component: Error,
+      },
+    ],
+  },
+  {
+    path: "/estudiante",
+    component: LayoutEstudiante,
+    exact: false,
+    routes: [
+      {
         path: "/estudiante",
-        component: LayoutEstudiante,
-        exact: false,
-        routes: [
-            {
-                path: "/estudiante",
-                component: HomeEstudiante,
-                exact: true
-            },
-            {
-                path: "/estudiante/perfil",
-                component: PerfilEstudiante,
-                exact: true
-            },
-            {
-                path: "/estudiante/chat",
-                component: Chat,
-                exact: true
-            }
-            ,
-            {
-                component: Error
-            }
-        ]
+        component: HomeEstudiante,
+        exact: true,
+      },
+      {
+        path: "/estudiante/perfil",
+        component: PerfilEstudiante,
+        exact: true,
+      },
+      {
+        path: "/estudiante/chat",
+        component: Chat,
+        exact: true,
+      },
+      {
+        component: Error,
+      },
+    ],
+  },
 
-    },
-
-    {
+  {
+    path: "/",
+    component: LayoutBasic,
+    exact: false,
+    routes: [
+      {
         path: "/",
-        component: LayoutBasic,
-        exact: false,
-        routes: [
-            {
-                path: "/",
-                component: LogInForm,
-                //component: MainLogin,
-                exact: true
-            },
-            {
-                path: "/registro",
-                component: Registro,
-                exact: true
-            },
-            {
-                component: Error
-            }
-        ]
-    }
-
+        component: LogInForm,
+        //component: MainLogin,
+        exact: true,
+      },
+      {
+        path: "/registro",
+        component: Registro,
+        exact: true,
+      },
+      {
+        component: Error,
+      },
+    ],
+  },
 ];
 
 export default routes;
