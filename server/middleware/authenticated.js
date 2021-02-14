@@ -20,6 +20,6 @@ exports.ensureAuth=(req,res,next)=>{
             message:"Token invalido"
         });
     }
-    req.user =payload;
+    req.user = payload;
     next();
 };

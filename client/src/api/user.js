@@ -56,3 +56,24 @@ export function signInApi(data) {
       return err.message;
     });
 }
+
+export function getUserAPI(data) {
+  const url = `${basePath}/${apiVersion}/get-user`;
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "applications/json",
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}

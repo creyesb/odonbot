@@ -22,7 +22,7 @@ function FormularioPacinte() {
     habitos: "",
     pacienteState: "",
   });
-  /*
+
   const [formValid, setFormValid] = useState({
     nombrePaciente: false,
     edad: false,
@@ -33,7 +33,7 @@ function FormularioPacinte() {
     habitos: false,
     pacienteState: false,
   });
-*/
+
   const changeForm = (e) => {
     setInputs({
       ...inputs,
@@ -47,11 +47,11 @@ function FormularioPacinte() {
       notification["success"]({
         message: result.message,
       });
+      resetForm();
     } else {
       notification["error"]({
         message: result.message,
       });
-      //resetForm();
     }
   };
 
@@ -70,6 +70,36 @@ function FormularioPacinte() {
   const onChangeEstado = (value) => {
     console.log(value);
   };
+
+  const resetForm = () => {
+    const inputs = document.getElementsByTagName("input");
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].classList.remove("success");
+      inputs[i].classList.remove("error");
+    }
+
+    setInputs({
+      nombrePaciente: "",
+      edad: "",
+      peso: "",
+      sintomas: "",
+      motivoConsulta: "",
+      enfermedadBase: "",
+      habitos: "",
+      pacienteState: "",
+    });
+    setFormValid({
+      nombrePaciente: false,
+      edad: false,
+      peso: false,
+      sintomas: false,
+      motivoConsulta: false,
+      enfermedadBase: false,
+      habitos: false,
+      pacienteState: false,
+    });
+  };
+
   return (
     <div className="">
       <div className="paciente__addButton">

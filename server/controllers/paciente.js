@@ -4,7 +4,7 @@ const { use } = require("../routers/paciente");
 
 function crearPaciente(req, res) {
     
-    const paciente =new Paciente();
+    const paciente = new Paciente();
 
     const {    nombrePaciente, edad, peso, sintomas, motivoConsulta, enfermedadBase, habitos, pacienteState } = req.body;
 
@@ -24,11 +24,10 @@ function crearPaciente(req, res) {
         } else {
             if (!pacienteStored) {
                 res.status(404).send({ message: "Error en registrar usuario" });
-            } else {
+            } else { 
                 res.status(200).send({ paciente: pacienteStored });
             }
         }
-
     });
 };
 

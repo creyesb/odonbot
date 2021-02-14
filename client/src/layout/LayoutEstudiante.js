@@ -16,9 +16,9 @@ export default function LayoutEstudiante(props) {
 
   const { user, isLoading } = useAuth();
 
-  /* console.log(user); 
-        console.log(isLoading);
-    */
+  /* console.log(user);
+    console.log(isLoading);
+   */
   if (!user && !isLoading) {
     return (
       <>

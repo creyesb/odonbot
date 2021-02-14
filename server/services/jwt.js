@@ -8,6 +8,8 @@ exports.createAccessToken = function (user) {
         id: user._id,
         nombre: user.nombre,
         apellidoP: user.apellidoP,
+        apellidoM: user.apellidoM,
+        rut: user.rut,
         email: user.email,
         rol: user.rol,
         createToken: moment().unix(),
@@ -16,7 +18,7 @@ exports.createAccessToken = function (user) {
             .unix()
 
     };
-
+    //console.log(payload);
     return jwt.encode(payload, SECRET_KEY);
 };
 

@@ -105,7 +105,6 @@ function EditForm(props) {
           <Col span={8}>
             <label>Estado</label>
             <Select
-              style={{ width: 120 }}
               placeholder="Estado"
               onChange={(e) =>
                 setDataPaciente({ ...dataPaciente, pacienteState: e })
