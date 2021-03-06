@@ -6,7 +6,7 @@ import { updatePacienteAPI } from "../../api/paciente";
 const { TextArea } = Input;
 
 export default function FormEditPaciente(props) {
-  const { paciente } = props;
+  const { paciente, setIsModalVisible, setReloadPaciente } = props;
   const [dataPaciente, setDataPaciente] = useState({
     nombrePaciente: paciente.nombrePaciente,
     edad: paciente.edad,
@@ -26,6 +26,8 @@ export default function FormEditPaciente(props) {
         message: result.message,
       });
     });
+    setIsModalVisible(false);
+    setReloadPaciente(true);
   };
 
   return (

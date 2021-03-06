@@ -6,7 +6,6 @@ import MenuTop from "../components/MenuTop";
 import useAuth from "../hooks/useAuth";
 import "./LayoutEstudiante.scss";
 import LogInForm from "../components/LogInForm/LogInForm";
-import LayoutProfesor from "../layout/LayoutProfesor";
 //import MainLogin from "../pages/MainLogin";
 
 export default function LayoutEstudiante(props) {

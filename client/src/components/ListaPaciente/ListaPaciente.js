@@ -12,7 +12,7 @@ import FormEditPaciente from "../FormularioEditarPaciente/FormEditPaciente";
 
 export default function ListaPaciente(props) {
   const [paciente, setPaciente] = useState([]);
-  const { pacienteActivo, pacienteInactivo } = props;
+  const { pacienteActivo, pacienteInactivo, setReloadPaciente } = props;
   /* Para mostrar los pacientes activos/inactivos*/
   const [viewPacienteActivo, setViewPacienteActivo] = useState(false);
   //Estados para el modal
@@ -38,7 +38,7 @@ export default function ListaPaciente(props) {
           onChange={() => setViewPacienteActivo(!viewPacienteActivo)}
         />
         <span>
-          {viewPacienteActivo ? "Usuarios Inactivos" : "Usuarios Activos "}
+          {viewPacienteActivo ? "Pacientes Inactivos" : "Pacientes Activos "}
         </span>
       </div>
       {viewPacienteActivo ? (
@@ -48,6 +48,7 @@ export default function ListaPaciente(props) {
           setModalContent={setModalContent}
           setModalTitle={setModalTitle}
           setIsModalVisible={setIsModalVisible}
+          setReloadPaciente={setReloadPaciente}
         />
       ) : (
         <PacienteInactivos
@@ -56,6 +57,7 @@ export default function ListaPaciente(props) {
           setModalContent={setModalContent}
           setModalTitle={setModalTitle}
           setIsModalVisible={setIsModalVisible}
+          setReloadPaciente={setReloadPaciente}
         />
       )}
 
@@ -76,15 +78,21 @@ function PacienteActivos(props) {
     setModalContent,
     setModalTitle,
     setIsModalVisible,
+    setReloadPaciente,
   } = props;
 
   const editPaciente = (paciente) => {
     setIsModalVisible(true);
     setModalTitle(`Editar ${paciente.nombrePaciente}`);
-    setModalContent(<FormEditPaciente paciente={paciente} />);
+    setModalContent(
+      <FormEditPaciente
+        paciente={paciente}
+        setIsModalVisible={setIsModalVisible}
+        setReloadPaciente={setReloadPaciente}
+      />
+    );
 
     //setModalContent("Formulario de paciente");
-    console.log({ paciente });
   };
 
   return (
@@ -132,14 +140,19 @@ function PacienteInactivos(props) {
     setModalContent,
     setModalTitle,
     setIsModalVisible,
+    setReloadPaciente,
   } = props;
 
   const editPaciente = (paciente) => {
     setIsModalVisible(true);
     setModalTitle(`Editar ${paciente.nombrePaciente}`);
-    setModalContent(<FormEditPaciente paciente={paciente} />);
-
-    //setModalContent("Formulario de paciente");
+    setModalContent(
+      <FormEditPaciente
+        paciente={paciente}
+        setIsModalVisible={setIsModalVisible}
+        setReloadPaciente={setReloadPaciente}
+      />
+    );
     console.log({ paciente });
   };
   return (

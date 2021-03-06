@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Layout } from "antd";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import MenuSiderProfe from "../components/MenuSiderProfe";
 import MenuTop from "../components/MenuTop";
 import "./LayoutProfesor.scss";

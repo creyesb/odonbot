@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { List, Avatar, Button, Switch } from "antd";
-import "./Solicitudes.scss";
-import { CloseOutlined, CheckOutlined } from "@ant-design/icons";
+import "./ListaEstudiante.scss";
+import {
+  CloseOutlined,
+  CheckOutlined,
+  InfoCircleOutlined,
+  EditOutlined,
+} from "@ant-design/icons";
 import { getUserAPI } from "../../api/user";
 import ModalForm from "../ModalForm/ModalForm";
-import FormEditUser from "../FormularioEditarUser/FormEditUser";
 
 export default function Solicitudes(props) {
   const { userActive, userInactive } = props;
@@ -25,19 +29,44 @@ export default function Solicitudes(props) {
       setUser(response.user);
     });
   }, []);
+
   return (
     <div className="estilo-solicitud">
-      <div className="estilo-solicitud__switch">
-        <span>{"Registro de estudiantes nuevos."}</span>
-      </div>
-
-      {<UserInactive userInactive={userInactive} />}
+      {
+        <UserActive
+          userActive={userActive}
+          isModalVisible={isModalVisible}
+          setModalContent={setModalContent}
+          setModalTitle={setModalTitle}
+          setIsModalVisible={setIsModalVisible}
+        />
+      }
+      <ModalForm
+        title={modalTitle}
+        isVisible={isModalVisible}
+        setIsVisible={setIsModalVisible}
+      >
+        {modalContent}
+      </ModalForm>
     </div>
   );
 }
 
 function UserActive(props) {
-  const { userActive } = props;
+  const {
+    userActive,
+    setModalContent,
+    setModalTitle,
+    setIsModalVisible,
+  } = props;
+
+  const viewData = (user) => {
+    setIsModalVisible(true);
+    setModalTitle(
+      `Datos de: ${user.nombre} ${user.apellidoP} ${user.apellidoM}`
+    );
+    setModalContent(`Correo: ${user.email}`);
+  };
   return (
     <List
       className="user-active"
@@ -47,15 +76,15 @@ function UserActive(props) {
         <List.Item
           actions={[
             <Button
-              icon={<CloseOutlined />}
-              type="danger"
-              onClick={() => console.log("Rechazar")}
+              icon={<EditOutlined />}
+              type="dashed"
+              onClick={() => console.log("editar")}
             ></Button>,
 
             <Button
-              icon={<CheckOutlined />}
+              icon={<InfoCircleOutlined />}
               type="primary"
-              onClick={() => console.log("Aceptar")}
+              onClick={() => viewData(item)}
             ></Button>,
           ]}
         >

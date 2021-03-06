@@ -5,7 +5,6 @@ const { use } = require("../routers/user");
 
 function signUp(req, res) {
   const user = new User();
-
   const {
     nombre,
     apellidoP,
@@ -100,16 +99,66 @@ function getUser(req, res) {
   User.find().then((user) => {
     if (!user) {
       res.status(404).send({
-        message: "No se han encotrado paciente.",
+        message: "No se han encotrado pacientes.",
       });
     } else {
       res.status(200).send({ user });
     }
   });
 }
+
+function updateUser(req, res) {
+  const userData = req.body;
+  const params = req.params;
+
+  User.findByIdAndUpdate({ _id: params.id }, userData, (err, userUpdate) => {
+    if (err) {
+      res.status(500).send({ message: "Error en el servidor" });
+    } else {
+      if (!userUpdate) {
+        res.status(404).send({ message: "No se ha encontrado usuario" });
+      } else {
+        res.status(200).send({ message: "Usuario actualizado correctamente" });
+      }
+    }
+  });
+}
+
+function getUserById(req, res) {
+  const params = req.params;
+
+  User.findById({ _id: params.id }, (err, userData) => {
+    if (err) {
+      res.status(500).send({ message: "Error en el servidor" });
+    } else {
+      if (!userData) {
+        res.status(404).send({ message: "No se ha encontrado usuario" });
+      } else {
+        res.status(200).send({ userData });
+      }
+    }
+  });
+}
+
+function getUserByState(req, res) {
+  const query = req.query;
+  User.find({ usrState: query.usrState }).then((user) => {
+    if (!user) {
+      res.status(404).send({
+        message: "No se han encotrado usuarios.",
+      });
+    } else {
+      res.status(200).send({ user });
+    }
+  });
+}
+
 module.exports = {
   signUp,
   signIn,
   rolEstudiante,
   getUser,
+  updateUser,
+  getUserById,
+  getUserByState,
 };

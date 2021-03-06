@@ -62,10 +62,51 @@ export function getUserAPI(data) {
   const params = {
     method: "GET",
     headers: {
-      "Content-Type": "applications/json",
+      "Content-Type": "application/json",
     },
   };
 
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+export function updateUserAPI(user, userId) {
+  const url = `${basePath}/${apiVersion}/get-user-by-id/:${userId}`;
+  const params = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "applications/json",
+    },
+    body: JSON.stringify(user),
+  };
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .then((err) => {
+      return err.message;
+    });
+}
+export function getUserByState(usrState) {
+  const url = `${basePath}/${apiVersion}/get-user-by-state?usrState=${usrState}`;
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  // console.log(params);
   return fetch(url, params)
     .then((response) => {
       return response.json();

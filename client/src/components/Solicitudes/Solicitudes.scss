@@ -1,8 +1,8 @@
 @import "../../scss/index.scss";
 
-.solicitudStyle {
-  padding: 40px;
-  padding-top: 80px;
+.estilo-solicitud {
+  height: 70vh;
+  overflow-y: auto;
 
   &__typo {
     position: relative;
@@ -13,5 +13,25 @@
     padding-top: 40px;
     font-size: xx-large;
     font-weight: 300;
+  }
+
+  &__switch {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+
+    > button {
+      margin-right: 20px;
+    }
+    &__switchButton {
+      align-items: right;
+      left: 10;
+    }
+  }
+  .user-active {
+    background-color: rgba(255, 255, 255, 0.762);
+    padding: 10px 15px;
   }
 }

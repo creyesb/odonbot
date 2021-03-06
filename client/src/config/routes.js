@@ -10,10 +10,12 @@ import HomeProfesor from "../pages/ProfesorPage/HomeProfesor";
 import Error from "../pages/Error";
 import Registro from "../components/RegistroPage/Registro";
 import LogInForm from "../components/LogInForm/LogInForm";
-import PerfilEstudiante from "../components/PerfilEstudiante/PerfilEstudiante";
+import Perfil from "../components/PerfilEstudiante/PerfilEstudiante";
 import Chat from "../pages/Chat/Chat";
 import Solicitudes from "../components/Solicitudes/Solicitudes";
 import Paciente from "../components/Paciente/Paciente";
+import User from "../components/User/User";
+import Estudiante from "../components/Estudiante/Estudiante";
 const routes = [
   {
     path: "/profesor",
@@ -27,7 +29,7 @@ const routes = [
       },
       {
         path: "/profesor/solicitudes",
-        component: Solicitudes,
+        component: User,
         exact: true,
       },
       {
@@ -37,7 +39,12 @@ const routes = [
       },
       {
         path: "/profesor/perfil",
-        component: PerfilEstudiante,
+        component: Perfil,
+        exact: true,
+      },
+      {
+        path: "/profesor/estudiantes",
+        component: Estudiante,
         exact: true,
       },
       {
@@ -57,7 +64,7 @@ const routes = [
       },
       {
         path: "/estudiante/perfil",
-        component: PerfilEstudiante,
+        component: Perfil,
         exact: true,
       },
       {
