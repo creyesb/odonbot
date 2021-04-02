@@ -15,6 +15,7 @@
   margin-left: auto;
   margin-right: auto;
   overflow-y: scroll;
+
   &__h4 {
     font-weight: lighter;
     align-items: center;
@@ -29,11 +30,12 @@
     margin-right: auto;
     position: relative;
     padding: 0 10px;
-    bottom: -100px;
+    bottom: -10px;
+    float: bottom;
   }
   &__inputContainer {
-    position: sticky;
-    bottom: -200px;
+    position: relative;
+    width: 420px;
   }
   &__tiempo {
     background-color: $font-grey-light;
@@ -41,4 +43,14 @@
     width: 20px;
     text-align: center;
   }
+}
+
+.inputMsg {
+  margin-top: 2px;
+  position: static;
+  padding-bottom: 2px;
+  padding-top: 2px;
+
+  border: 1px solid $font-grey;
+  background-color: $font-light;
 }

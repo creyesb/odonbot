@@ -1,7 +1,7 @@
-'use strict'
-const dialogflow = require('dialogflow');
-const config = require('../config/keys');
-const structjson = require('./structjson');
+"use strict";
+const dialogflow = require("dialogflow");
+const config = require("../config/keys");
+const structjson = require("./structjson");
 
 /*
 const projectID = config.googleProjectID;
@@ -11,48 +11,58 @@ const credentials = {
 };
 */
 const sessionsClient = new dialogflow.SessionsClient();
-const sessionPath = sessionsClient.sessionPath(config.googleProjectID, config.dialogFlowSessionID);
-module.exports = {
-    textQuery: async function (text, parameters = {}) {
-        let self = module.exports;
-        const request = {
-            session: sessionPath,
-            queryInput: {
-                text: {
-                    text: text,
-                    languageCode: config.dialogFlowSessionLanguageCode,
-                },
-            },
-            queryParams: {
-                payload: {
-                    data: parameters
-                }
-            }
-        };
-        let responses = await sessionsClient
-            .detectIntent(request);
-        responses = await self.handleAction(responses);
-        return responses;
-    },
-    eventQuery: async function (event, parameters = {}) {
-        let self = module.exports;
-        const request = {
-            session: sessionPath,
-            queryInput: {
-                event: {
-                    name: event,
-                    parameters: structjson.jsonToStructProto(parameters),
-                    languageCode: config.dialogFlowSessionLanguageCode,
-                },
-            },
-        };
-        let responses = await sessionsClient
-            .detectIntent(request);
-        responses = await self.handleAction(responses);
-        return responses;
-    },
+const sessionPath = sessionsClient.sessionPath(
+  config.googleProjectID,
+  config.dialogFlowSessionID
+);
 
-    handleAction: function (responses) {
-        return responses;
-    }
-}
+module.exports = {
+  textQuery: async function(text, userID, parameters = {}) {
+    let sessionPath = sessionsClient.sessionPath(
+      config.googleProjectID,
+      config.dialogFlowSessionID + userID
+    );
+    let self = module.exports;
+    const request = {
+      session: sessionPath,
+      queryInput: {
+        text: {
+          text: text,
+          languageCode: config.dialogFlowSessionLanguageCode,
+        },
+      },
+      queryParams: {
+        payload: {
+          data: parameters,
+        },
+      },
+    };
+    let responses = await sessionsClient.detectIntent(request);
+    responses = await self.handleAction(responses);
+    return responses;
+  },
+  eventQuery: async function(event, userID, parameters = {}) {
+    let self = module.exports;
+    let sessionPath = sessionsClient.sessionPath(
+      config.googleProjectID,
+      config.dialogFlowSessionID + userID
+    );
+    const request = {
+      session: sessionPath,
+      queryInput: {
+        event: {
+          name: event,
+          parameters: structjson.jsonToStructProto(parameters),
+          languageCode: config.dialogFlowSessionLanguageCode,
+        },
+      },
+    };
+    let responses = await sessionsClient.detectIntent(request);
+    responses = await self.handleAction(responses);
+    return responses;
+  },
+
+  handleAction: function(responses) {
+    return responses;
+  },
+};

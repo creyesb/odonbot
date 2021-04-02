@@ -3,22 +3,24 @@ import { List, Avatar, Button, Switch } from "antd";
 import "./Solicitudes.scss";
 import { CloseOutlined, CheckOutlined } from "@ant-design/icons";
 import { getUserAPI } from "../../api/user";
+/*
 import ModalForm from "../ModalForm/ModalForm";
-import FormEditUser from "../FormularioEditarUser/FormEditUser";
+import FormEditUser from "../FormularioEditarUser/FormEditUser";*/
 
 export default function Solicitudes(props) {
   const { userActive, userInactive } = props;
+
   const [user, setUser] = useState([]);
 
-  const [viewUserActive, setViewUserActive] = useState(true);
+  //const [viewUserActive, setViewUserActive] = useState(true);
   /* Para mostrar los pacientes activos/inactivos*/
   //Estados para el modal
   /*Estado para mostrar/ocultar estado */
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  //const [isModalVisible, setIsModalVisible] = useState(false);
   /* texto del titulo del modal ej: nombre del paciente*/
-  const [modalTitle, setModalTitle] = useState("");
+  //const [modalTitle, setModalTitle] = useState("");
   /* Estado para el contenido del modal */
-  const [modalContent, setModalContent] = useState(null);
+  //const [modalContent, setModalContent] = useState(null);
 
   useEffect(() => {
     getUserAPI().then((response) => {

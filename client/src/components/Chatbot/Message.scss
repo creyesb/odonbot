@@ -1,18 +1,53 @@
 @import "../../scss/index.scss";
-.msg {
-  width: auto;
+.boxMsgBot {
+  width: 350px;
   height: auto;
   border: 1px solid rgba(237, 235, 237, 0.858);
   border-radius: 10px;
-  margin-left: auto;
   margin-right: auto;
   background-color: rgb(240, 242, 245);
   margin-bottom: 10px;
-  padding-left: 20px;
+  padding: 3px;
 }
 
-.thirdCol {
+.boxMsgEstudiante {
+  width: 300px;
+  height: auto;
+  border: 1px solid rgba(237, 235, 237, 0.858);
+  border-radius: 10px;
+  margin-right: 175px;
+  background-color: rgb(194, 222, 237);
+  margin-bottom: 10px;
+  padding: 3px;
 }
-.secondColumn {
-  padding-top: 7px;
+
+.msgContent {
+  margin-right: auto;
+  width: 100%;
+  justify-items: flex-start;
+}
+
+.estText {
+  margin-left: 70px;
+  top: 13px;
+}
+
+.avatarEstudiante {
+  bottom: 13px;
+}
+.avatarBot {
+  bottom: -13px;
+  margin-bottom: 20px;
+}
+
+.botText {
+  margin-left: 70px;
+  bottom: 30px;
+}
+.boxMsg {
+  float: right;
+}
+
+.boxMsgBot {
+  float: left;
 }
