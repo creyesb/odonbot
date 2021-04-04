@@ -110,17 +110,25 @@ class Chatbot extends Component {
       return (
         <div key={i}>
           <div className="ant-card-contain-grid">
-            <div style={{ overflow: "hidden" }}>
+            <div style={{ overflow: "auto" }}>
               <Avatar src={logo} className="avatarBot" />
               {message.speaks}
             </div>
-            <div style={{ overflow: "auto", overflowY: "scroll" }}>
+
+            <div
+              style={{
+                overflow: "auto",
+                overflowY: "scroll",
+                height: "400px",
+
+                paddingBottom: "30px",
+              }}
+            >
               <div
                 style={{
-                  height: "300px",
-                  width:
-                    message.msg.payload.fields.cards.listValue.values.length *
-                    270,
+                  width: "340px",
+                  /*message.msg.payload.fields.cards.listValue.values.length *
+                    270,*/
                 }}
               >
                 {this.renderCards(

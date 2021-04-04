@@ -1,12 +1,6 @@
 import React from "react";
-import { Card, Avatar } from "antd";
-import {
-  SettingOutlined,
-  EditOutlined,
-  EllipsisOutlined,
-} from "@ant-design/icons";
+import { Card } from "antd";
 import "./PatienPhotoCard.scss";
-import logo from "../../assets/png/botlogo.png";
 
 const { Meta } = Card;
 
@@ -14,7 +8,7 @@ export default function PatientPhotoCard(props) {
   return (
     <div className="cardStyle">
       <Card
-        style={{ width: 200 }}
+        style={{ width: 280, borderRadius: "20px" }}
         cover={
           <img
             alt={props.payload.fields.header.stringValue}
@@ -23,7 +17,6 @@ export default function PatientPhotoCard(props) {
         }
       >
         <Meta
-          avatar={<Avatar src={logo} className="avatarBot" />}
           title={props.payload.fields.header.stringValue}
           description={props.payload.fields.description.stringValue}
         />
