@@ -125,10 +125,10 @@ function EditForm(props) {
               <label>Sintomas</label>
               <TextArea
                 rows={2}
-                value={dataPaciente.sintomas}
+                icon={<UserAddOutlined />}
                 type="text"
                 name="sintomas"
-                icon={<UserAddOutlined />}
+                value={dataPaciente.sintomas}
                 onChange={(e) =>
                   setDataPaciente({
                     ...dataPaciente,
