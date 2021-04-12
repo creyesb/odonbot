@@ -28,6 +28,7 @@ const deadline = Date.now() + 1000 * 60 * 60 * 10 * 2 + 1000 * 0; // Moment is a
 
 class Chatbot extends Component {
   messagesEnd;
+
   constructor(props) {
     super(props);
     this.msg = React.createRef();
@@ -41,7 +42,7 @@ class Chatbot extends Component {
     if (cookies.get("userID") === undefined) {
       cookies.set("userID", uuid(), { path: "/" });
     }
-    console.log(cookies.get("userID"));
+    //console.log(cookies.get("userID"));
   }
 
   async df_text_query(queyText) {
@@ -59,6 +60,7 @@ class Chatbot extends Component {
       text: queyText,
       userID: cookies.get("userID"),
     });
+    console.log(res);
     for (let msg of res.data.fulfillmentMessages) {
       console.log(JSON.stringify(msg));
       says = {

@@ -12,6 +12,7 @@ api.post("/df-text-query", async (req, res) => {
     req.body.userID,
     req.body.paremeters
   );
+
   res.send(responses[0].queryResult);
 });
 

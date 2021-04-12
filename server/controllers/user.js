@@ -59,7 +59,7 @@ function signIn(req, res) {
   const params = req.body;
   const email = params.email.toLowerCase();
   const password = params.password;
-
+  //const rol =params.rol;
   User.findOne({ email }, (err, userStored) => {
     if (err) {
       res.status(500).send({ message: "Error en el servidor" });
@@ -92,7 +92,7 @@ function signIn(req, res) {
 function rolEstudiante(req, res) {
   const params = req.body;
   // const {rol} = params.rol;
-  console.log(params.rol);
+  console.log("El rol del user es: " + params.rol);
 }
 
 function getUser(req, res) {

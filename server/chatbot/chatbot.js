@@ -39,6 +39,8 @@ module.exports = {
     };
     let responses = await sessionsClient.detectIntent(request);
     responses = await self.handleAction(responses);
+    // console.log(responses);//responses stores query text(sent message) and fullfilmenttext(answer message)
+
     return responses;
   },
   eventQuery: async function(event, userID, parameters = {}) {
