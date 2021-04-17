@@ -97,3 +97,45 @@ export function updatePacienteAPI(paciente, pacienteID) {
       return err.message;
     });
 }
+
+export function activatePacienteAPI(pacienteID, status) {
+  const url = `${basePath}/${apiVersion}/activatePaciente/${pacienteID}`;
+  const params = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ pacienteState: status }),
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result.message;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+export function deletePacienteAPI(pacienteID) {
+  const url = `${basePath}/${apiVersion}/deletePaciente/${pacienteID}`;
+  const params = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result.message;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}

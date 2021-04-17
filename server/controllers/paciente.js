@@ -85,10 +85,47 @@ function updatePaciente(req, res) {
     }
   );
 }
+function activatePaciente(req, res) {
+  const { id } = req.params;
+  const { pacienteState } = req.body;
+  Paciente.findByIdAndUpdate(id, { pacienteState }, (err, pacienteStored) => {
+    if (err) {
+      res.status(500).send({ message: "Error del servidor" });
+    } else {
+      if (!pacienteStored) {
+        res.status(404).send({ message: "No se ha encontrado el Paciente" });
+      } else {
+        if (pacienteState === 1) {
+          res.status(200).send({ message: "Paciente activado correctamente" });
+        } else if (pacienteState === 0) {
+          res
+            .status(200)
+            .send({ message: "Paciente desactivado correctanente" });
+        }
+      }
+    }
+  });
+}
 
+function deletePaciente(req, res) {
+  const { id } = req.params;
+  Paciente.findByIdAndDelete(id, (err, pacienteDelete) => {
+    if (err) {
+      res.status(500).send({ message: "Error en el servidor" });
+    } else {
+      if (!pacienteDelete) {
+        res.status(400).send({ message: "No se ha encontrado el paciente" });
+      } else {
+        res.status(200).send({ message: "Paciente ha sido eliminado" });
+      }
+    }
+  });
+}
 module.exports = {
   crearPaciente,
   getPaciente,
   getPacienteByState,
   updatePaciente,
+  activatePaciente,
+  deletePaciente,
 };

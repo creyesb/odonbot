@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { List, Avatar, Button, Switch } from "antd";
+import { List, Avatar, Button, Switch, notification, Modal } from "antd";
 import "./ListaPaciente.scss";
 import {
   EditOutlined,
   DeleteOutlined,
   UserSwitchOutlined,
 } from "@ant-design/icons";
-import { getPaciente } from "../../api/paciente";
+import {
+  getPaciente,
+  activatePacienteAPI,
+  deletePacienteAPI,
+} from "../../api/paciente";
 import ModalForm from "../ModalForm/ModalForm";
 import FormEditPaciente from "../FormularioEditarPaciente/FormEditPaciente";
-
+const { confirm } = Modal;
 export default function ListaPaciente(props) {
   const [paciente, setPaciente] = useState([]);
   const { pacienteActivo, pacienteInactivo, setReloadPaciente } = props;
@@ -91,10 +95,46 @@ function PacienteActivos(props) {
         setReloadPaciente={setReloadPaciente}
       />
     );
-
-    //setModalContent("Formulario de paciente");
   };
 
+  const desactivarPaciente = (paciente) => {
+    activatePacienteAPI(paciente._id, 1)
+      .then((response) => {
+        notification["success"]({
+          message: response,
+        });
+        setReloadPaciente(true);
+      })
+      .catch((err) => {
+        notification["error"]({
+          message: err,
+        });
+      });
+  };
+
+  const showDeleteConfirm = (paciente) => {
+    confirm({
+      title: "Eliminar paciente",
+      content: `Estas seguro que quieres eliminar a ${paciente.nombrePaciente}?`,
+      okText: "Eliminar",
+      okType: "danger",
+      cancelText: "Cancelar",
+      onOk() {
+        deletePacienteAPI(paciente._id)
+          .then((response) => {
+            notification["success"]({
+              message: response,
+            });
+            setReloadPaciente(true);
+          })
+          .catch((err) => {
+            notification["error"]({
+              message: err.message,
+            });
+          });
+      },
+    });
+  };
   return (
     <div>
       <List
@@ -107,7 +147,7 @@ function PacienteActivos(props) {
               <Button
                 icon={<UserSwitchOutlined />}
                 type="dashed"
-                onClick={() => console.log("Desactivar")}
+                onClick={() => desactivarPaciente(item)}
               ></Button>,
               <Button
                 icon={<EditOutlined />}
@@ -117,7 +157,7 @@ function PacienteActivos(props) {
               <Button
                 icon={<DeleteOutlined />}
                 type="danger"
-                onClick={() => console.log("Eliminar")}
+                onClick={() => showDeleteConfirm(item)}
               ></Button>,
             ]}
           >
@@ -155,6 +195,44 @@ function PacienteInactivos(props) {
     );
     console.log({ paciente });
   };
+
+  const activarPaciente = (paciente) => {
+    activatePacienteAPI(paciente._id, 0)
+      .then((response) => {
+        notification["success"]({
+          message: response,
+        });
+        setReloadPaciente(true);
+      })
+      .catch((err) => {
+        notification["error"]({
+          message: err,
+        });
+      });
+  };
+  const showDeleteConfirm = (paciente) => {
+    confirm({
+      title: "Eliminar paciente",
+      content: `Estas seguro que quieres eliminar a ${paciente.nombrePaciente}?`,
+      okText: "Eliminar",
+      okType: "danger",
+      cancelText: "Cancelar",
+      onOk() {
+        deletePacienteAPI(paciente._id)
+          .then((response) => {
+            notification["success"]({
+              message: response,
+            });
+            setReloadPaciente(true);
+          })
+          .catch((err) => {
+            notification["error"]({
+              message: err.message,
+            });
+          });
+      },
+    });
+  };
   return (
     <div>
       <List
@@ -167,7 +245,7 @@ function PacienteInactivos(props) {
               <Button
                 icon={<UserSwitchOutlined />}
                 type="default"
-                onClick={() => console.log("Desactivar")}
+                onClick={() => activarPaciente(item)}
               ></Button>,
               <Button
                 icon={<EditOutlined />}
@@ -177,7 +255,7 @@ function PacienteInactivos(props) {
               <Button
                 icon={<DeleteOutlined />}
                 type="danger"
-                onClick={() => console.log("Eliminar")}
+                onClick={() => showDeleteConfirm(item)}
               ></Button>,
             ]}
           >

@@ -11,6 +11,7 @@ export default function ModalForm(props) {
       visible={isVisible}
       onCancel={() => setIsVisible(false)}
       footer={false}
+      destroyOnClose={true}
     >
       {children}
     </Modal>
