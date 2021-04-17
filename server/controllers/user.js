@@ -153,6 +153,21 @@ function getUserByState(req, res) {
   });
 }
 
+function deleteUser(req, res) {
+  const { id } = req.params;
+  User.findByIdAndDelete(id, (err, userDelete) => {
+    if (err) {
+      res.status(500).send({ message: "Error en el servidor" });
+    } else {
+      if (!userDelete) {
+        res.status(400).send({ message: "No se ha encontrado el paciente" });
+      } else {
+        res.status(200).send({ message: "Paciente ha sido eliminado" });
+      }
+    }
+  });
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -161,4 +176,5 @@ module.exports = {
   updateUser,
   getUserById,
   getUserByState,
+  deleteUser,
 };

@@ -10,4 +10,5 @@ api.get("/get-user", UserController.getUser);
 api.put("/update-user/:id", UserController.updateUser);
 api.get("/get-user-by-id/:id", UserController.getUserById);
 api.get("/get-user-by-state", UserController.getUserByState);
+api.delete("/deleteUser/:id", UserController.deleteUser);
 module.exports = api;
