@@ -7,7 +7,7 @@ import useAuth from "../hooks/useAuth";
 import "./LayoutEstudiante.scss";
 import LogInForm from "../components/LogInForm/LogInForm";
 //import MainLogin from "../pages/MainLogin";
-
+import LayoutProfesor from "./LayoutProfesor";
 export default function LayoutEstudiante(props) {
   const { routes } = props;
   const [menuCollapsed, setMenuCollapsed] = useState(true);

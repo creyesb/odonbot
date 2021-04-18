@@ -9,9 +9,10 @@ import {
 } from "@ant-design/icons";
 import { getUserAPI } from "../../api/user";
 import ModalForm from "../ModalForm/ModalForm";
-
+import ShowUserInfo from "../ShowUserInfo/ShowUserInfo";
+import FormularioEditarUser from "../FormularioEditarUser/FormEditUser";
 export default function Solicitudes(props) {
-  const { userActive, userInactive } = props;
+  const { userActive, userInactive, setReloadUser } = props;
   const [user, setUser] = useState([]);
 
   const [viewUserActive, setViewUserActive] = useState(true);
@@ -39,6 +40,7 @@ export default function Solicitudes(props) {
           setModalContent={setModalContent}
           setModalTitle={setModalTitle}
           setIsModalVisible={setIsModalVisible}
+          setReloadUser={setReloadUser}
         />
       }
       <ModalForm
@@ -58,14 +60,24 @@ function UserActive(props) {
     setModalContent,
     setModalTitle,
     setIsModalVisible,
+    setReloadUser,
   } = props;
 
   const viewData = (user) => {
     setIsModalVisible(true);
-    setModalTitle(
-      `Datos de: ${user.nombre} ${user.apellidoP} ${user.apellidoM}`
+    setModalTitle("");
+    setModalContent(<ShowUserInfo user={user} />);
+  };
+  const editData = (user) => {
+    setIsModalVisible(true);
+    setModalTitle("Editar estudiante");
+    setModalContent(
+      <FormularioEditarUser
+        user={user}
+        setIsModalVisible={setIsModalVisible}
+        setReloadUser={setReloadUser}
+      />
     );
-    setModalContent(`Correo: ${user.email}`);
   };
   return (
     <List
@@ -78,48 +90,13 @@ function UserActive(props) {
             <Button
               icon={<EditOutlined />}
               type="dashed"
-              onClick={() => console.log("editar")}
+              onClick={() => editData(item)}
             ></Button>,
 
             <Button
               icon={<InfoCircleOutlined />}
               type="primary"
               onClick={() => viewData(item)}
-            ></Button>,
-          ]}
-        >
-          <List.Item.Meta
-            avatar={
-              <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-            }
-            title={item.nombre + " " + item.apellidoP + " " + item.apellidoM}
-            description={item.email}
-          />
-        </List.Item>
-      )}
-    />
-  );
-}
-function UserInactive(props) {
-  const { userInactive } = props;
-  return (
-    <List
-      className="user-active"
-      itemLayout="horizontal"
-      dataSource={userInactive}
-      renderItem={(item) => (
-        <List.Item
-          actions={[
-            <Button
-              icon={<CloseOutlined />}
-              type="danger"
-              onClick={() => console.log("Rechazar")}
-            ></Button>,
-
-            <Button
-              icon={<CheckOutlined />}
-              type="primary"
-              onClick={() => console.log("Aceptar")}
             ></Button>,
           ]}
         >

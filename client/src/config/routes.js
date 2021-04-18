@@ -12,7 +12,6 @@ import Registro from "../components/RegistroPage/Registro";
 import LogInForm from "../components/LogInForm/LogInForm";
 import Perfil from "../components/PerfilEstudiante/PerfilEstudiante";
 import Chat from "../pages/Chat/Chat";
-import Solicitudes from "../components/Solicitudes/Solicitudes";
 import Paciente from "../components/Paciente/Paciente";
 import User from "../components/User/User";
 import Estudiante from "../components/Estudiante/Estudiante";
