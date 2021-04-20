@@ -25,7 +25,7 @@ function signUp(req, res) {
   user.password = password;
   user.passwordConfirmation = passwordConfirmation;
   user.rol = rol;
-  user.usrState = usrState;
+  user.usrState = "false";
   if (!password || !passwordConfirmation) {
     res.status(404).send({ message: "Las constraseñas son obligatorias" });
   } else {
@@ -40,7 +40,7 @@ function signUp(req, res) {
 
           user.save((err, userStored) => {
             if (err) {
-              res.status(500).send({ message: "Usuario ya registrado" });
+              res.status(500).send({ message: "Revise su correo y rut" });
             } else {
               if (!userStored) {
                 res.status(404).send({ message: "Error en registrar usuario" });
@@ -168,6 +168,30 @@ function deleteUser(req, res) {
   });
 }
 
+function activateUser(req, res) {
+  const { id } = req.params;
+  const { usrState } = req.body;
+  User.findByIdAndUpdate(id, { usrState }, (err, usrStored) => {
+    if (err) {
+      res.status(500).send({ message: "Error del servidor" });
+    } else {
+      if (!usrStored) {
+        res.status(404).send({ message: "No se ha encontrado el Estudiante" });
+      } else {
+        if (usrState === "true") {
+          res
+            .status(200)
+            .send({ message: "Estudiante activado correctamente" });
+        } else if (usrState === "false") {
+          res
+            .status(200)
+            .send({ message: "Estudiante desactivado correctanente" });
+        }
+      }
+    }
+  });
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -177,4 +201,5 @@ module.exports = {
   getUserById,
   getUserByState,
   deleteUser,
+  activateUser,
 };

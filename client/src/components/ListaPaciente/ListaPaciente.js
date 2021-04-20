@@ -14,6 +14,7 @@ import {
 import ModalForm from "../ModalForm/ModalForm";
 import FormEditPaciente from "../FormularioEditarPaciente/FormEditPaciente";
 const { confirm } = Modal;
+
 export default function ListaPaciente(props) {
   const [paciente, setPaciente] = useState([]);
   const { pacienteActivo, pacienteInactivo, setReloadPaciente } = props;

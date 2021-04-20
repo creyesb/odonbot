@@ -118,3 +118,25 @@ export function getUserByState(usrState) {
       return err.message;
     });
 }
+
+export function activateUserAPI(userID, status) {
+  const url = `${basePath}/${apiVersion}/activateUser/${userID}`;
+  const params = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ usrState: status }),
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result.message;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}

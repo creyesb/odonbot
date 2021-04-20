@@ -1,8 +1,8 @@
-import { Typography } from "antd";
+import { Typography, notification } from "antd";
 import React, { useState, useEffect } from "react";
 import "./User.scss";
 import Solicitudes from "../../components/Solicitudes/Solicitudes";
-import { getUserByState } from "../../api/user";
+import { getUserByState, updateUserAPI } from "../../api/user";
 
 function ActiveInactive() {
   const [userActive, setUserActive] = useState([]);

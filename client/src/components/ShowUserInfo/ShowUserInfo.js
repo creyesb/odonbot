@@ -16,6 +16,9 @@ export default function ShowUserInfo(props) {
         </Descriptions.Item>
         <Descriptions.Item label="Correo">{user.email}</Descriptions.Item>
         <Descriptions.Item label="Rut">{user.rut}</Descriptions.Item>
+        <Descriptions.Item label="Estado">
+          {user.usrState ? "Activo" : "Inactivo"}
+        </Descriptions.Item>
       </Descriptions>
     </div>
   );

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { List, Avatar, Button, Switch } from "antd";
+import { List, Avatar, Button, notification } from "antd";
 import "./Solicitudes.scss";
 import { CloseOutlined, CheckOutlined } from "@ant-design/icons";
-import { getUserAPI } from "../../api/user";
+import { getUserAPI, activateUserAPI } from "../../api/user";
 /*
 import ModalForm from "../ModalForm/ModalForm";
 import FormEditUser from "../FormularioEditarUser/FormEditUser";*/
 
 export default function Solicitudes(props) {
-  const { userActive, userInactive } = props;
+  const { userInactive, setReloadUser } = props;
 
   const [user, setUser] = useState([]);
 
@@ -27,54 +27,54 @@ export default function Solicitudes(props) {
       setUser(response.user);
     });
   }, []);
+
   return (
     <div className="estilo-solicitud">
       <div className="estilo-solicitud__switch">
         <span>{"Registro de estudiantes nuevos."}</span>
       </div>
 
-      {<UserInactive userInactive={userInactive} />}
+      {
+        <UserInactive
+          userInactive={userInactive}
+          setReloadUser={setReloadUser}
+        />
+      }
     </div>
   );
 }
 
-function UserActive(props) {
-  const { userActive } = props;
-  return (
-    <List
-      className="user-active"
-      itemLayout="horizontal"
-      dataSource={userActive}
-      renderItem={(item) => (
-        <List.Item
-          actions={[
-            <Button
-              icon={<CloseOutlined />}
-              type="danger"
-              onClick={() => console.log("Rechazar")}
-            ></Button>,
-
-            <Button
-              icon={<CheckOutlined />}
-              type="primary"
-              onClick={() => console.log("Aceptar")}
-            ></Button>,
-          ]}
-        >
-          <List.Item.Meta
-            avatar={
-              <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-            }
-            title={item.nombre + " " + item.apellidoP + " " + item.apellidoM}
-            description={item.email}
-          />
-        </List.Item>
-      )}
-    />
-  );
-}
 function UserInactive(props) {
-  const { userInactive } = props;
+  const { userInactive, setReloadUser } = props;
+
+  const desactivarUser = (user) => {
+    activateUserAPI(user._id, "false")
+      .then((response) => {
+        notification["success"]({
+          message: response,
+        });
+        setReloadUser(true);
+      })
+      .catch((err) => {
+        notification["error"]({
+          message: err,
+        });
+      });
+  };
+  const activateUser = (user) => {
+    activateUserAPI(user._id, "true")
+      .then((response) => {
+        notification["success"]({
+          message: response,
+        });
+        setReloadUser(true);
+      })
+      .catch((err) => {
+        notification["error"]({
+          message: err,
+        });
+      });
+  };
   return (
     <List
       className="user-active"
@@ -86,13 +86,13 @@ function UserInactive(props) {
             <Button
               icon={<CloseOutlined />}
               type="danger"
-              onClick={() => console.log("Rechazar")}
+              onClick={() => desactivarUser(item)}
             ></Button>,
 
             <Button
               icon={<CheckOutlined />}
               type="primary"
-              onClick={() => console.log("Aceptar")}
+              onClick={() => activateUser(item)}
             ></Button>,
           ]}
         >

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Form, Row, Col, notification, Input, Button } from "antd";
+import { Form, Row, Col, notification, Input, Button, Select } from "antd";
 import { updateUserAPI } from "../../api/user";
 import { UserAddOutlined } from "@ant-design/icons";
-
 import "./FormEditUser.scss";
+const { Option } = Select;
 
 export default function FormEditUser(props) {
   const { user, setIsModalVisible, setReloadUser } = props;
@@ -53,7 +53,7 @@ function EditForm(props) {
         <Row gutter={24}>
           <Col span={24}>
             <Form.Item>
-              <label>Nombre</label>
+              <label>Nombres</label>
               <Input
                 placeholder="Nombre"
                 value={dataUser.nombre}
@@ -71,9 +71,9 @@ function EditForm(props) {
           </Col>
         </Row>
         <Row gutter={24}>
-          <Col span={24}>
+          <Col span={12}>
             <Form.Item>
-              <label>apellido paterno</label>
+              <label>Apellido Paterno</label>
               <Input
                 placeholder="apellidoP"
                 value={dataUser.apellidoP}
@@ -89,7 +89,44 @@ function EditForm(props) {
               />
             </Form.Item>
           </Col>
+
+          <Col span={12}>
+            <Form.Item>
+              <label>Apellido Materno</label>
+              <Input
+                placeholder="apellidoM"
+                value={dataUser.apellidoM}
+                type="text"
+                name="apellidoM"
+                icon={<UserAddOutlined />}
+                onChange={(e) =>
+                  setDataUser({
+                    ...dataUser,
+                    apellidoM: e.target.value,
+                  })
+                }
+              />
+            </Form.Item>
+          </Col>
         </Row>
+
+        <Row gutter={24}>
+          <Col
+            span={24}
+            onChange={(e) =>
+              setDataUser({
+                ...dataUser,
+                usrState: e.target.usrState,
+              })
+            }
+          >
+            <Select labelInValue style={{ width: 220 }} defaultValue="true">
+              <Option value="true">Activo</Option>
+              <Option value="false">Inactivo</Option>
+            </Select>
+          </Col>
+        </Row>
+        <br></br>
         <Button type="primary" htmlType="submit">
           Actualizar datos
         </Button>
