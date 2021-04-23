@@ -1,13 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ChatSchema = Schema(
-  {
-    emisor: String,
-    receptor: String,
-    _iduser: String,
-  },
-  { timestamps: true }
-);
+const ChatSchema = Schema({
+  iduser: String,
+  queryText: String,
+  fullfilmentText: String,
+});
 
 module.exports = mongoose.model("Chat", ChatSchema);
