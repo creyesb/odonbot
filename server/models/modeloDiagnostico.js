@@ -1,0 +1,1 @@
+var diagnostico = require("./diagnostico");

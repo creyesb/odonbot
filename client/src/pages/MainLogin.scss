@@ -1,46 +1,42 @@
 @import "../scss/index.scss";
 
+.login-layout {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 45px;
 
-.login-layout{
+  &__text {
     display: grid;
+    font-size: 40px;
+    font-weight: 300;
     align-items: center;
     justify-content: center;
-    padding-bottom: 45px;
-
-    &__text{
-        display: grid;
-        font-size: 40px;
-        font-weight: 300;
-        align-items: center;
-        justify-content: center;
-        padding-top: 40px;
-    }
-    &__img{
-        padding-bottom: 30px;
-        padding-left: 80px;
-        width: 250px;
-    }
-
-
+    padding-top: 40px;
+  }
+  &__img {
+    padding-bottom: 30px;
+    padding-left: 80px;
+    width: 250px;
+  }
 }
 
-.sign-in{
+.sign-in {
   display: flex;
   min-height: 100vh;
 }
 
 .login-form {
-    max-width: 300px;
-    padding-left: 40px;
-  }
-  
-  .login-form-forgot {
-    float: right;
-  }
+  max-width: 300px;
+  padding-left: 40px;
+}
+
+.login-form-forgot {
+  float: right;
+}
 .ant-col-rtl .login-form-forgot {
-    float: left;
-  }
+  float: left;
+}
 .login-form-button {
-    width: 100%;
-  }
-  
+  width: 100%;
+}

@@ -59,26 +59,28 @@ function signIn(req, res) {
   const params = req.body;
   const email = params.email.toLowerCase();
   const password = params.password;
-  //const rol =params.rol;
+  //const rol = params.rol;
+
   User.findOne({ email }, (err, userStored) => {
     if (err) {
       res.status(500).send({ message: "Error en el servidor" });
     } else {
       if (!userStored) {
-        res.status(404).send({ message: "Usuario no encontrado" });
+        res.status(401).send({ message: "Usuario no encontrado" });
       } else {
         bcrypt.compare(password, userStored.password, (err, check) => {
           if (err) {
             res.status(500).send({ message: "Error del servidor" });
           } else if (!check) {
-            res.status(404).send({ message: "La contraseña es incorrecta" });
+            res.status(401).send({ message: "La contraseña es incorrecta." });
           } else {
             if (!userStored.usrState) {
               res
                 .status(200)
-                .send({ code: 200, message: "El usuario no esta activo" });
+                .send({ code: 200, message: "El usuario no esta activo." });
             } else {
               res.status(200).send({
+                email,
                 accessToken: jwt.createAccessToken(userStored),
                 refreshToken: jwt.createRefreshToken(userStored),
               });
@@ -142,7 +144,22 @@ function getUserById(req, res) {
 
 function getUserByState(req, res) {
   const query = req.query;
+
   User.find({ usrState: query.usrState }).then((user) => {
+    if (!user) {
+      res.status(404).send({
+        message: "No se han encotrado usuarios.",
+      });
+    } else {
+      res.status(200).send({ user });
+    }
+  });
+}
+
+function getUserByEmail(req, res) {
+  const params = req.params;
+
+  User.findOne({ email: params.email }).then((user) => {
     if (!user) {
       res.status(404).send({
         message: "No se han encotrado usuarios.",
@@ -162,7 +179,7 @@ function deleteUser(req, res) {
       if (!userDelete) {
         res.status(400).send({ message: "No se ha encontrado el paciente" });
       } else {
-        res.status(200).send({ message: "Paciente ha sido eliminado" });
+        res.status(200).send({ message: "Usuario ha sido eliminado" });
       }
     }
   });
@@ -202,4 +219,5 @@ module.exports = {
   getUserByState,
   deleteUser,
   activateUser,
+  getUserByEmail,
 };

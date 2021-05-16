@@ -1,11 +1,10 @@
 const Chat = require("../models/chat");
-const { use } = require("../routers/chat");
 
 function crearChat(req, res) {
   const chat = new Chat();
 
-  const { iduser, queryText, fullfilmentText } = req.body;
-  chat.iduser = iduser;
+  const { _id, queryText, fullfilmentText } = req.body;
+  chat.user = _id;
   chat.fullfilmentText = fullfilmentText;
   chat.queryText = queryText;
 
@@ -21,6 +20,13 @@ function crearChat(req, res) {
     }
   });
 }
+
+function findChats(req, res) {
+  Chat.find({}, (err, res) => {
+    //console.log(res);
+  });
+}
 module.exports = {
   crearChat,
+  findChats,
 };

@@ -1,0 +1,91 @@
+@import "../../scss/index.scss";
+
+.myButtonEstudiantes {
+  background-color: #188fff;
+  border-radius: 13px;
+  border: 1px solid #188fff;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 15px 41px;
+  text-decoration: none;
+  text-shadow: 0px 1px 13px #1267b6;
+  width: 200px;
+  margin: 10px;
+}
+
+.myButtonSolicitudes {
+  background-color: #0071dd;
+  border-radius: 13px;
+  border: 1px solid #0071dd;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 15px 41px;
+  text-decoration: none;
+  text-shadow: 0px 1px 13px #1267b6;
+  width: 200px;
+  margin: 10px;
+}
+
+.myButtonEvaluaciones {
+  background-color: #0055bb;
+  border-radius: 13px;
+  border: 1px solid 4#0055BB;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 15px 36px;
+  text-decoration: none;
+  text-shadow: 0px 1px 13px #1267b6;
+  width: 200px;
+  margin: 10px;
+}
+
+.myButtonPacientes {
+  background-color: #003b9b;
+  border-radius: 13px;
+  border: 1px solid 4#003B9B;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 15px 41px;
+  text-decoration: none;
+  text-shadow: 0px 1px 13px #1267b6;
+  width: 200px;
+  margin: 10px;
+}
+
+.myButtonPerfil {
+  background-color: #00247b;
+  border-radius: 13px;
+  border: 1px solid 4#00247B;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  justify-content: center;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 15px 51px;
+  text-decoration: none;
+  text-shadow: 0px 1px 13px #001952;
+  width: 200px;
+  margin: 10px;
+}
+
+.buttonGrid {
+  margin-top: 70px;
+  max-width: 500px;
+  padding-left: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80vh;
+}

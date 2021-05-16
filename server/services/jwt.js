@@ -3,7 +3,7 @@ const moment = require("moment");
 
 const SECRET_KEY = "74V7qI55V36ZghBpr3";
 
-exports.createAccessToken = function(user) {
+function createAccessToken(user) {
   const payload = {
     id: user._id,
     nombre: user.nombre,
@@ -20,9 +20,9 @@ exports.createAccessToken = function(user) {
   };
   //console.log(payload);
   return jwt.encode(payload, SECRET_KEY);
-};
+}
 
-exports.createRefreshToken = function(user) {
+function createRefreshToken(user) {
   const payload = {
     id: user._id,
     exp: moment()
@@ -30,8 +30,15 @@ exports.createRefreshToken = function(user) {
       .unix(),
   };
   return jwt.encode(payload, SECRET_KEY);
-};
+}
 
-exports.decodedToken = function(token) {
+function decodedToken(token) {
+  //console.log("Esto que es: " + jwt.decode(token, SECRET_KEY, true));
   return jwt.decode(token, SECRET_KEY, true);
+}
+
+module.exports = {
+  decodedToken,
+  createRefreshToken,
+  createAccessToken,
 };

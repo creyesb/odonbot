@@ -7,7 +7,7 @@ import useAuth from "../hooks/useAuth";
 import "./LayoutEstudiante.scss";
 import LogInForm from "../components/LogInForm/LogInForm";
 //import MainLogin from "../pages/MainLogin";
-import LayoutProfesor from "./LayoutProfesor";
+
 export default function LayoutEstudiante(props) {
   const { routes } = props;
   const [menuCollapsed, setMenuCollapsed] = useState(true);
@@ -26,7 +26,6 @@ export default function LayoutEstudiante(props) {
   }
 
   if (user && !isLoading) {
-    console.log(user.rol);
     return (
       <Layout>
         <MenuSider menuCollapsed={menuCollapsed} />
@@ -34,6 +33,7 @@ export default function LayoutEstudiante(props) {
           className="layout-admin"
           style={{
             marginLeft: menuCollapsed ? "10px" : "200px",
+            zIndex: 999,
           }}
         >
           <Header className="layout-admin__header">

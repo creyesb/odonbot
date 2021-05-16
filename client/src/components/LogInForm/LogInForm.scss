@@ -1,63 +1,65 @@
 @import "../../scss/index.scss";
-
-.formClass{
-    padding: 40px;
-    padding-top: 80px;
-}
-.typoClass{
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 30px;
-    text-align: center;
-    padding-top: 40px ;
-    padding-bottom: 50px;
-    font-size: xx-large;
-    font-weight: 500;
+.formbox {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100vh;
+  &__spacing {
+    height: 40px;
+  }
 }
 
-.formbox{
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    text-align: left;
-    max-width: 200px;
-    margin-left:auto;
-    margin-right:auto;
-    min-height: 100vh;
+.formClass {
+  padding: 40px;
+  padding-top: 80px;
 }
-.loginForm{
-   padding: 60px;
-}
-
-.loginbutton{
-    
-    width: 100%;
-    max-width: 140px;
-    margin-left:auto;
-    margin-right:auto;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-}
-.imglogin{
-    padding-bottom: 10px;
-    width: 180px;
-    max-width: 251px;
-    margin-left:auto;
-    margin-right:auto;
-    justify-content: center;
-    display: flex;
-    align-items: center;
+.typoClass {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 50px;
+  font-size: xx-large;
+  font-weight: 500;
 }
 
-.reglink{justify-content: center;
-    display: flex;
-    align-items: center;
-    margin-left:auto;
-    margin-right:auto;
-    
+.loginForm {
+  padding: 60px;
 }
-.login-form__input{
-    border-radius: 5px;
+
+.loginbutton {
+  width: 100%;
+  max-width: 140px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.imglogin {
+  padding-bottom: 10px;
+  width: 180px;
+  max-width: 251px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.reglink {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.login-form__input {
+  border-radius: 5px;
 }

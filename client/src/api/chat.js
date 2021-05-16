@@ -1,5 +1,5 @@
 import { basePath, apiVersion } from "./config";
-
+//import {} from "./auth";
 export function createChatAPI(data) {
   const url = `${basePath}/${apiVersion}/createChat`;
   const params = {
@@ -18,7 +18,7 @@ export function createChatAPI(data) {
       if (result.chat) {
         return {
           status: 200,
-          message: "chat creado con éxito",
+          message: "Chat creado con éxito",
         };
       }
       return {

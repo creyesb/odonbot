@@ -1,5 +1,7 @@
 const express = require("express");
 const chatbot = require("../chatbot/chatbot");
+const User = require("../controllers/user");
+
 const api = express.Router();
 
 api.get("/main", (req, res) => {
@@ -14,6 +16,7 @@ api.post("/df-text-query", async (req, res) => {
   );
 
   res.send(responses[0].queryResult);
+  //console.log(responses);
 });
 
 api.post("/df-event-query", async (req, res) => {

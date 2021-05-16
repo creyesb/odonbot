@@ -15,6 +15,7 @@ import Chat from "../pages/Chat/Chat";
 import Paciente from "../components/Paciente/Paciente";
 import User from "../components/User/User";
 import Estudiante from "../components/Estudiante/Estudiante";
+
 const routes = [
   {
     path: "/profesor",

@@ -14,6 +14,7 @@ function MainLogin() {
       <div>
         <div className="login-layout">
           <h1 className="login-layout__text"> Iniciar sesión</h1>
+
           <img className="login-layout__img" src={botLogo} alt="login" />
 
           <Form
@@ -55,10 +56,6 @@ function MainLogin() {
               <Form.Item name="remember" valuePropName="checked" noStyle>
                 <Checkbox>Recuérdame!</Checkbox>
               </Form.Item>
-
-              <a className="login-form-forgot" href="">
-                Olvidé la contraseña
-              </a>
             </Form.Item>
             <div className="login-form-registro">
               <Form.Item>
