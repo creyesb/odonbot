@@ -118,6 +118,26 @@ export function getUserByState(usrState) {
       return err.message;
     });
 }
+export function getUserByRol(rol) {
+  const url = `${basePath}/${apiVersion}/get-user-by-rol?rol=${rol}`;
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  // console.log(params);
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
 
 export function activateUserAPI(userID, status) {
   const url = `${basePath}/${apiVersion}/activateUser/${userID}`;
@@ -156,6 +176,26 @@ export function getUserByEmail(email) {
     })
     .then((result) => {
       return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+export function deleteUserAPI(userId) {
+  const url = `${basePath}/${apiVersion}/deleteUser/${userId}`;
+  const params = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result.message;
     })
     .catch((err) => {
       return err.message;

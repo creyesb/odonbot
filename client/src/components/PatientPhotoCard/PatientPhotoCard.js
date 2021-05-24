@@ -8,7 +8,11 @@ export default function PatientPhotoCard(props) {
   return (
     <div className="cardStyle">
       <Card
-        style={{ width: 280, borderRadius: "20px" }}
+        style={{
+          width: 220,
+          borderRadius: "20px",
+          margin: "10px",
+        }}
         cover={
           <img
             alt={props.payload.fields.header.stringValue}
@@ -17,6 +21,7 @@ export default function PatientPhotoCard(props) {
         }
       >
         <Meta
+          style={{ margin: "10px" }}
           title={props.payload.fields.header.stringValue}
           description={props.payload.fields.description.stringValue}
         />

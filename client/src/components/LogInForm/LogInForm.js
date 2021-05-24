@@ -48,6 +48,11 @@ function LogInForm(props) {
         if (getAccessTokenApi()) {
           return <Redirect to="/profesor" />;
         }
+      } else if (resss.user.rol === 2) {
+        window.location.href = "/admin";
+        if (getAccessTokenApi()) {
+          return <Redirect to="/admin" />;
+        }
       }
     }
   };

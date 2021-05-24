@@ -4,14 +4,15 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
+  margin-bottom: 60px;
 }
 .chatbot {
   position: relative;
   border: 1px solid $font-grey;
   background-color: $font-light;
   border-radius: 3px;
-  height: 500px;
-  max-width: 500px;
+  height: 400px;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
   overflow-y: scroll;
@@ -35,7 +36,7 @@
   }
   &__inputContainer {
     position: relative;
-    width: 485px;
+    max-width: 400px;
   }
   &__tiempo {
     background-color: $font-grey-light;
@@ -50,13 +51,16 @@
   position: static;
   padding-bottom: 2px;
   padding-top: 2px;
-
   border: 1px solid $font-grey;
   background-color: $font-light;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ant-card-contain-grid {
   height: 430px;
-  width: 320px;
+  max-width: 270px;
+  min-width: 180px;
   overflow: hidden;
 }

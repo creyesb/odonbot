@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { List, Avatar, Button, Modal, notification } from "antd";
-import "./ListaEstudiante.scss";
+import "./ListaProfesores.scss";
 import {
   InfoCircleOutlined,
   EditOutlined,
@@ -71,7 +71,7 @@ function UserActive(props) {
   };
   const editData = (user) => {
     setIsModalVisible(true);
-    setModalTitle("Editar estudiante");
+    setModalTitle("Editar Profesor");
     setModalContent(
       <FormularioEditarUser
         user={user}

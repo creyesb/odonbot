@@ -6,11 +6,7 @@ export default function ShowUserInfo(props) {
 
   return (
     <div>
-      <Descriptions
-        title="Informacion de Estudiante"
-        bordered={true}
-        column={1}
-      >
+      <Descriptions title="Informacion de Usuario" bordered={true} column={1}>
         <Descriptions.Item label="Nombre">
           {user.nombre + " " + user.apellidoP + " " + user.apellidoM}
         </Descriptions.Item>

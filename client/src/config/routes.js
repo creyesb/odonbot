@@ -2,6 +2,7 @@
 import LayoutProfesor from "../layout/LayoutProfesor";
 import LayoutEstudiante from "../layout/LayoutEstudiante";
 import LayoutBasic from "../layout/LayoutBasic";
+import LayoutAdmin from "../layout/LayoutAdmin";
 //pages
 
 import HomeEstudiante from "../pages/EstudiantePage/HomeEstudiante";
@@ -15,7 +16,11 @@ import Chat from "../pages/Chat/Chat";
 import Paciente from "../components/Paciente/Paciente";
 import User from "../components/User/User";
 import Estudiante from "../components/Estudiante/Estudiante";
+import ShowChat from "../components/ShowChat/ShowChat";
+// import Admin Components
+import HomeAdmin from "../pages/HomeAdmin/HomeAdmin";
 
+import Profesor from "../components/Profesor/Profesor";
 const routes = [
   {
     path: "/profesor",
@@ -68,8 +73,53 @@ const routes = [
         exact: true,
       },
       {
+        path: "/estudiante/show-chat",
+        component: ShowChat,
+        exact: true,
+      },
+      {
         path: "/estudiante/chat",
         component: Chat,
+        exact: true,
+      },
+      {
+        component: Error,
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    component: LayoutAdmin,
+    exact: false,
+    routes: [
+      {
+        path: "/admin",
+        component: HomeAdmin,
+        exact: true,
+      },
+      {
+        path: "/admin/perfil",
+        component: Perfil,
+        exact: true,
+      },
+      {
+        path: "/admin/pacientes",
+        component: Paciente,
+        exact: true,
+      },
+      {
+        path: "/admin/estudiantes",
+        component: Estudiante,
+        exact: true,
+      },
+      {
+        path: "/admin/profesores",
+        component: Profesor,
+        exact: true,
+      },
+      {
+        path: "/admin/solicitudes",
+        component: User,
         exact: true,
       },
       {

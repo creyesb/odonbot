@@ -30,8 +30,8 @@ function MenuSider(props) {
             <span className="nav-text">Incio</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key="/estudiante/evaluaciones">
-          <Link to={"/estudiante/evaluaciones"}>
+        <Menu.Item key="/estudiante/show-chat">
+          <Link to={"/estudiante/show-chat"}>
             <MenuOutlined />
             <span className="nav-text">Mis Evaluaciones</span>
           </Link>

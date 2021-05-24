@@ -22,11 +22,35 @@ function crearChat(req, res) {
 }
 
 function findChats(req, res) {
-  Chat.find({}, (err, res) => {
-    //console.log(res);
+  Chat.find().then((chat) => {
+    if (!chat) {
+      res.status(404).send({
+        message: "No se han encotrado usuarios.",
+      });
+    } else {
+      res.status(200).send({ chat });
+    }
   });
 }
+
+function findChatsById(req, res) {
+  const params = req.params;
+
+  User.findById({ _id: params.user }, (err, userData) => {
+    if (err) {
+      res.status(500).send({ message: "Error en el servidor" });
+    } else {
+      if (!userData) {
+        res.status(404).send({ message: "No se ha encontrado usuario" });
+      } else {
+        res.status(200).send({ userData });
+      }
+    }
+  });
+}
+
 module.exports = {
   crearChat,
   findChats,
+  findChatsById,
 };

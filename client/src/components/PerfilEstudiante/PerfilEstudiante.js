@@ -1,5 +1,14 @@
 import React from "react";
-import { Upload, Typography, Input, Form, Button, Divider } from "antd";
+import {
+  Upload,
+  Typography,
+  Input,
+  Form,
+  Button,
+  Divider,
+  Row,
+  Col,
+} from "antd";
 import useAuth from "../../hooks/useAuth";
 import "./PerfilEstudiante.scss";
 import {
@@ -110,14 +119,20 @@ export default function PerfilEstudiante(props) {
                 <InboxOutlined />
               </Dragger>
             </Form.Item>
-            <Form.Item>
-              <Button type="primary" htmlType="Submit">
-                Actualizar datos
-              </Button>
-            </Form.Item>
-            <Form.Item>
-              <Button href="/estudiante/">Atras</Button>
-            </Form.Item>
+            <Row gutter={24} style={{ marginBottom: "40px" }}>
+              <Col span={4}>
+                <Form.Item>
+                  <Button href="/estudiante/">Atras</Button>
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item>
+                  <Button type="primary" htmlType="Submit">
+                    Actualizar datos
+                  </Button>
+                </Form.Item>
+              </Col>
+            </Row>
           </Form>
         </div>
       </div>

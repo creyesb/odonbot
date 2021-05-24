@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { List, Avatar, Button, notification } from "antd";
+import { List, Avatar, Button, notification, Modal } from "antd";
 import "./Solicitudes.scss";
 import { CloseOutlined, CheckOutlined } from "@ant-design/icons";
-import { getUserAPI, activateUserAPI } from "../../api/user";
+import { getUserAPI, activateUserAPI, deleteUserAPI } from "../../api/user";
+const { confirm } = Modal;
+
 /*
 import ModalForm from "../ModalForm/ModalForm";
 import FormEditUser from "../FormularioEditarUser/FormEditUser";*/
@@ -46,7 +48,7 @@ export default function Solicitudes(props) {
 
 function UserInactive(props) {
   const { userInactive, setReloadUser } = props;
-
+  /*
   const desactivarUser = (user) => {
     activateUserAPI(user._id, "false")
       .then((response) => {
@@ -60,7 +62,7 @@ function UserInactive(props) {
           message: err,
         });
       });
-  };
+  };*/
   const activateUser = (user) => {
     activateUserAPI(user._id, "true")
       .then((response) => {
@@ -75,6 +77,33 @@ function UserInactive(props) {
         });
       });
   };
+  const showDeleteConfirm = (user) => {
+    confirm({
+      title: `Rechazar ${user.rol ? "Profesor" : "Estudiante"}`,
+      content: `Estas seguro que quieres rechazar el registro de: ${user.nombre +
+        " " +
+        user.apellidoP +
+        " " +
+        user.apellidoM}?`,
+      okText: "Recahazar",
+      okType: "danger",
+      cancelText: "Cancelar",
+      onOk() {
+        deleteUserAPI(user._id)
+          .then((response) => {
+            notification["success"]({
+              message: response,
+            });
+            setReloadUser(true);
+          })
+          .catch((err) => {
+            notification["error"]({
+              message: err.message,
+            });
+          });
+      },
+    });
+  };
   return (
     <List
       className="user-active"
@@ -86,7 +115,7 @@ function UserInactive(props) {
             <Button
               icon={<CloseOutlined />}
               type="danger"
-              onClick={() => desactivarUser(item)}
+              onClick={() => showDeleteConfirm(item)}
             ></Button>,
 
             <Button

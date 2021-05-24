@@ -101,7 +101,7 @@ function getUser(req, res) {
   User.find().then((user) => {
     if (!user) {
       res.status(404).send({
-        message: "No se han encotrado pacientes.",
+        message: "No se han encotrado usuarios.",
       });
     } else {
       res.status(200).send({ user });
@@ -146,6 +146,19 @@ function getUserByState(req, res) {
   const query = req.query;
 
   User.find({ usrState: query.usrState }).then((user) => {
+    if (!user) {
+      res.status(404).send({
+        message: "No se han encotrado usuarios.",
+      });
+    } else {
+      res.status(200).send({ user });
+    }
+  });
+}
+function getUserByRol(req, res) {
+  const query = req.query;
+
+  User.find({ rol: query.rol }).then((user) => {
     if (!user) {
       res.status(404).send({
         message: "No se han encotrado usuarios.",
@@ -220,4 +233,5 @@ module.exports = {
   deleteUser,
   activateUser,
   getUserByEmail,
+  getUserByRol,
 };

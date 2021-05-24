@@ -1,7 +1,9 @@
 @import "../../scss/index.scss";
+
 .boxMsgBot {
-  width: 350px;
-  height: auto;
+  width: 270px;
+  min-height: 10px;
+  max-height: 130px;
   border: 1px solid rgba(237, 235, 237, 0.858);
   border-radius: 10px;
   margin-right: auto;
@@ -11,7 +13,7 @@
 }
 
 .boxMsgEstudiante {
-  width: 300px;
+  width: 200px;
   height: auto;
   border: 1px solid rgba(237, 235, 237, 0.858);
   border-radius: 10px;
@@ -25,10 +27,16 @@
   margin-right: auto;
   width: 100%;
   justify-items: flex-start;
+  text-align: justify;
 }
-
+.mensajeBot {
+  margin-right: auto;
+  width: 100%;
+  justify-items: flex-start;
+  text-align: justify;
+}
 .estText {
-  margin-left: 70px;
+  margin-left: 50px;
   top: 13px;
 }
 
@@ -41,8 +49,8 @@
 }
 
 .botText {
-  margin-left: 70px;
-  bottom: 30px;
+  margin-left: 40px;
+  bottom: 50px;
 }
 .boxMsg {
   float: right;

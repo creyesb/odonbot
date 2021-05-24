@@ -139,13 +139,12 @@ class Chatbot extends Component {
                 overflow: "auto",
                 overflowY: "scroll",
                 height: "400px",
-
                 paddingBottom: "30px",
               }}
             >
               <div
                 style={{
-                  width: "340px",
+                  maxWidth: "300px",
                   /*message.msg.payload.fields.cards.listValue.values.length *
                     270,*/
                 }}
@@ -223,7 +222,6 @@ class Chatbot extends Component {
               <Col span={4}>
                 <Countdown title="Tiempo" value={deadline} />
               </Col>
-              <Typography></Typography>
             </Col>
           </div>
         </Row>
@@ -261,6 +259,7 @@ class Chatbot extends Component {
             </Col>
           </Row>
         </Form>
+        <br></br>
       </div>
     );
   }

@@ -1,8 +1,10 @@
 @import "../../scss/index.scss";
 
 .cardStyle {
-  width: 300px;
+  max-width: 300px;
   padding: 10px;
   border-radius: 10px;
   padding-bottom: 10px;
+  background-color: rgb(240, 242, 245);
+  border: 1px solid rgba(237, 235, 237, 0.858);
 }

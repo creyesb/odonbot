@@ -1,14 +1,14 @@
 @import "../../scss/index.scss";
 
 .chat {
-  height: 95vh;
+  height: auto;
+  z-index: 1;
   &__title {
     position: relative;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding-top: 40px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
     font-size: xx-large;
     font-weight: 300;
   }
