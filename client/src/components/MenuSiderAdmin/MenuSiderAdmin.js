@@ -55,7 +55,6 @@ function MenuSider(props) {
             <span className="nav-text">Solicitudes</span>
           </Link>
         </Menu.Item>
-
         <Menu.Item key="/admin/pacientes">
           <Link to={"/admin/pacientes"}>
             <RobotOutlined />

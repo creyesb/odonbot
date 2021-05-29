@@ -19,8 +19,8 @@ import Estudiante from "../components/Estudiante/Estudiante";
 import ShowChat from "../components/ShowChat/ShowChat";
 // import Admin Components
 import HomeAdmin from "../pages/HomeAdmin/HomeAdmin";
-
 import Profesor from "../components/Profesor/Profesor";
+
 const routes = [
   {
     path: "/profesor",
@@ -35,6 +35,11 @@ const routes = [
       {
         path: "/profesor/solicitudes",
         component: User,
+        exact: true,
+      },
+      {
+        path: "/profesor/chat",
+        component: Chat,
         exact: true,
       },
       {

@@ -11,6 +11,7 @@ import {
   RobotOutlined,
   NotificationOutlined,
   OrderedListOutlined,
+  MessageOutlined,
 } from "@ant-design/icons";
 
 import "./MenuSider.scss";
@@ -24,6 +25,7 @@ function MenuSider(props) {
       collapsed={menuCollapsed}
       theme="light"
       collapsedWidth={0}
+      mode="vertical"
     >
       <Menu mode="inline" defaultSelectedKeys={[location.pathname]}>
         <Menu.Item key="/profesor">
@@ -32,7 +34,6 @@ function MenuSider(props) {
             <span className="nav-text">Incio</span>
           </Link>
         </Menu.Item>
-
         <Menu.Item key="/profesor/estudiantes">
           <Link to={"/profesor/estudiantes"}>
             <OrderedListOutlined />
@@ -50,6 +51,12 @@ function MenuSider(props) {
             <BookOutlined />
             <span className="nav-text">Evaluaciones</span>
           </Link>
+        </Menu.Item>
+        <Menu.Item key="/profesor/chat">
+          <a href={"/profesor/chat"}>
+            <MessageOutlined />
+            <span className="nav-text">Chat</span>
+          </a>
         </Menu.Item>
         <Menu.Item key="/profesor/pacientes">
           <Link to={"/profesor/pacientes"}>

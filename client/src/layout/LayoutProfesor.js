@@ -5,12 +5,13 @@ import MenuSiderProfe from "../components/MenuSiderProfe";
 import MenuTop from "../components/MenuTop";
 import useAuth from "../hooks/useAuth";
 import LogInForm from "../components/LogInForm/LogInForm";
+
 import "./LayoutProfesor.scss";
 
 function LayoutProfesor(props) {
   const { routes } = props;
   const [menuCollapsed, setMenuCollapsed] = useState(true);
-  const { Header, Footer, Content } = Layout;
+  const { Header, Content } = Layout;
 
   const { user, isLoading } = useAuth();
 
@@ -43,9 +44,6 @@ function LayoutProfesor(props) {
             <Content className="layout-admin__content">
               <LoadRoutes routes={routes} />
             </Content>
-            <Footer className="layout-admin__footer">
-              Developed by Cristian Reyes{" "}
-            </Footer>
           </Layout>
         </Layout>
       </div>
@@ -54,18 +52,27 @@ function LayoutProfesor(props) {
   return null;
 }
 function LoadRoutes({ routes }) {
-  return (
-    <Switch>
-      {routes.map((route, index) => (
-        <Route
-          key={index}
-          path={route.path}
-          exact={route.exact}
-          component={route.component}
-        />
-      ))}
-    </Switch>
-  );
+  const { user } = useAuth();
+  if (user.rol === 1) {
+    return (
+      <Switch>
+        {routes.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            component={route.component}
+          />
+        ))}
+      </Switch>
+    );
+  } else if (user.rol === 0) {
+    return <Redirect to="/estudiante" />;
+  } else if (user.rol === 2) {
+    return <Redirect to="/admin" />;
+  } else {
+    return null;
+  }
 }
 
 export default LayoutProfesor;

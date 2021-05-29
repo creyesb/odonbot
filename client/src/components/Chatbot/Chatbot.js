@@ -5,7 +5,7 @@ import "./Chatbot.scss";
 import axios from "axios/index";
 import Message from "./Message";
 import logo from "../../assets/png/botlogo.png";
-
+import { basePath, apiVersion } from "../../api/config";
 /* Para sesiones unicas de usuarios */
 import { v4 as uuid } from "uuid";
 import Cookies from "universal-cookie";
@@ -71,25 +71,27 @@ class Chatbot extends Component {
   handleChange(event) {
     this.setState({ text: event.target.value });
   }
+
   async df_event_query(event) {
-    const res = await axios.post("/api/v1/df-event-query", {
+    const res = await axios.post(`/xapi/v1/df-event-query`, {
       event,
       userID: cookies.get("userID"),
     });
-
     for (let msg of res.data.fulfillmentMessages) {
       let says = {
         speaks: "bot",
         msg: msg,
       };
-      this.setState({ messages: [...this.state.message, says] });
+      this.setState({
+        messages: [...this.state.message, says],
+      });
     }
 
     //console.log(res);
   }
 
   storeChat(data) {
-    console.log(data);
+    //console.log(data);
     const result = data;
     createChatAPI(result);
   }

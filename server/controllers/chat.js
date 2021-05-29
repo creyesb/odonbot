@@ -36,14 +36,14 @@ function findChats(req, res) {
 function findChatsById(req, res) {
   const params = req.params;
 
-  User.findById({ _id: params.user }, (err, userData) => {
+  User.findById({ _id: params.id }, (err, userChat) => {
     if (err) {
       res.status(500).send({ message: "Error en el servidor" });
     } else {
-      if (!userData) {
-        res.status(404).send({ message: "No se ha encontrado usuario" });
+      if (!userChat) {
+        res.status(404).send({ message: "No se ha encontrado chat" });
       } else {
-        res.status(200).send({ userData });
+        res.status(200).send({ userChat });
       }
     }
   });

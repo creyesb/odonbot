@@ -17,7 +17,6 @@ mongoose.set("useFindAndModify", false); // con esto se arregla un bug deprecati
 mongoose.connect(
   `mongodb://${IP_SERVER}:${PORT_DB}/bot`,
   //`mongodb+srv://creyesb:210197@cluster0.jnxtm.mongodb.net/bot?retryWrites=true&w=majority`,
-
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err, res) => {
     if (err) {

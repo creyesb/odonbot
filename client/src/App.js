@@ -3,17 +3,21 @@ import "./App.scss";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import routes from "./config/routes";
 import AuthProvider from "./providers/AuthProviders";
+import { ConfigProvider } from "antd";
+import esEs from "antd/lib/locale/es_ES";
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Switch>
-          {routes.map((route, index) => (
-            <RouterWithSubRoutes key={index} {...route} />
-          ))}
-        </Switch>
-      </Router>
-    </AuthProvider>
+    <ConfigProvider locale={esEs}>
+      <AuthProvider>
+        <Router>
+          <Switch>
+            {routes.map((route, index) => (
+              <RouterWithSubRoutes key={index} {...route} />
+            ))}
+          </Switch>
+        </Router>
+      </AuthProvider>
+    </ConfigProvider>
   );
 }
 

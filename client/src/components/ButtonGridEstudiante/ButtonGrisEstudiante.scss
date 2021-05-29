@@ -1,0 +1,58 @@
+@import "../../scss/index.scss";
+
+.myButtonEvaluacionesEst {
+  background-color: #0055bb;
+  border-radius: 13px;
+  border: 1px solid 4#0055BB;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 15px 20px;
+  text-decoration: none;
+  text-shadow: 0px 1px 13px #1267b6;
+  width: 200px;
+  margin: 10px;
+}
+
+.myButtonPerfilEst {
+  background-color: #75007b;
+  border-radius: 13px;
+  border: 1px solid 4#7b0052;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  justify-content: center;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 15px 51px;
+  text-decoration: none;
+  text-shadow: 0px 1px 13px #001952;
+  width: 200px;
+  margin: 10px;
+}
+
+.myButtonChatEst {
+  background-color: #2c99fd;
+  border-radius: 13px;
+  border: 1px solid 4#2C99FD;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  justify-content: center;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 15px 51px;
+  text-decoration: none;
+  text-shadow: 0px 1px 13px #001952;
+  width: 200px;
+  margin: 10px;
+}
+
+.buttonGridEst {
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}

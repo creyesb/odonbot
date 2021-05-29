@@ -51,18 +51,27 @@ function LayoutAdmin(props) {
   return null;
 }
 function LoadRoutes({ routes }) {
-  return (
-    <Switch>
-      {routes.map((route, index) => (
-        <Route
-          key={index}
-          path={route.path}
-          exact={route.exact}
-          component={route.component}
-        />
-      ))}
-    </Switch>
-  );
+  const { user } = useAuth();
+  if (user.rol === 2) {
+    return (
+      <Switch>
+        {routes.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            component={route.component}
+          />
+        ))}
+      </Switch>
+    );
+  } else if (user.rol === 0) {
+    return <Redirect to="/estudiante" />;
+  } else if (user.rol === 1) {
+    return <Redirect to="/profesor" />;
+  } else {
+    return null;
+  }
 }
 
 export default LayoutAdmin;

@@ -6,7 +6,10 @@ import {
   NotificationOutlined,
   BookOutlined,
   UserOutlined,
+  MessageOutlined,
 } from "@ant-design/icons";
+
+import { Link } from "react-router-dom";
 
 import "./ButtonGridProfesor.scss";
 export default function ButtonGridProfesor() {
@@ -15,26 +18,32 @@ export default function ButtonGridProfesor() {
       <Space direction="vertical" size={[1, 10]} wrap="true">
         {new Array(1).fill(null).map((_, index) => (
           <div key={index}>
-            <a href="/profesor/estudiantes" className="myButtonEstudiantes">
+            <a href="/profesor/chat" className="myButtonChat">
+              <MessageOutlined style={{ marginRight: "6px" }} />
+              Chat
+            </a>
+            <Link to="/profesor/estudiantes" className="myButtonEstudiantes">
               <OrderedListOutlined style={{ marginRight: "6px" }} />
               Estudiante
-            </a>
-            <a href="/profesor/solicitudes" className="myButtonSolicitudes">
+            </Link>
+
+            <Link to="/profesor/solicitudes" className="myButtonSolicitudes">
               <NotificationOutlined style={{ marginRight: "6px" }} />
               Solicitudes
-            </a>
-            <a href="/profesor/evaluaciones" className="myButtonEvaluaciones">
+            </Link>
+
+            <Link to="/profesor/evaluaciones" className="myButtonEvaluaciones">
               <BookOutlined style={{ marginRight: "6px" }} />
               Evaluaciones
-            </a>
-            <a href="/profesor/pacientes" className="myButtonPacientes">
+            </Link>
+            <Link to="/profesor/pacientes" className="myButtonPacientes">
               <RobotOutlined style={{ marginRight: "6px" }} />
               Pacientes
-            </a>
-            <a href="/profesor/perfil" className="myButtonPerfil">
+            </Link>
+            <Link to="/profesor/perfil" className="myButtonPerfil">
               <UserOutlined style={{ marginRight: "6px" }} />
               Perfil
-            </a>
+            </Link>
           </div>
         ))}
       </Space>

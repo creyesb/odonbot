@@ -13,7 +13,7 @@ import FormularioEditarUser from "../FormularioEditarUser/FormEditUser";
 const { confirm } = Modal;
 
 export default function Solicitudes(props) {
-  const { userActive, userInactive, setReloadUser } = props;
+  const { userActive, setReloadUser } = props;
   const [user, setUser] = useState([]);
 
   const [viewUserActive, setViewUserActive] = useState(true);
