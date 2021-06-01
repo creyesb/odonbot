@@ -4,7 +4,7 @@
   width: 270px;
   min-height: 10px;
   max-height: 130px;
-  border: 1px solid rgba(237, 235, 237, 0.858);
+  border: 1px solid rgbrgb(240, 242, 245);
   border-radius: 10px;
   margin-right: auto;
   background-color: rgb(240, 242, 245);
@@ -13,7 +13,7 @@
 }
 
 .boxMsgEstudiante {
-  width: 200px;
+  width: 240px;
   height: auto;
   border: 1px solid rgba(237, 235, 237, 0.858);
   border-radius: 10px;
@@ -27,13 +27,11 @@
   margin-right: auto;
   width: 100%;
   justify-items: flex-start;
-  text-align: justify;
 }
 .mensajeBot {
   margin-right: auto;
   width: 100%;
   justify-items: flex-start;
-  text-align: justify;
 }
 .estText {
   margin-left: 50px;

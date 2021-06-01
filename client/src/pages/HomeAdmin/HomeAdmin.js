@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "antd";
 import "./HomeAdmin.scss";
-import ButtonGridProfesor from "../../components/ButtonGridProfesor/ButtonGridProfesor";
+import ButtonGridAdmin from "../../components/ButtonGridAdmin/ButtonGridAdmin";
 import useAuth from "../../hooks/useAuth";
 const { Title } = Typography;
 
@@ -15,7 +15,7 @@ export default function AdminPage() {
           {user.nombre + " " + user.apellidoP + " " + user.apellidoM}
         </Title>
       </div>
-      <ButtonGridProfesor />
+      <ButtonGridAdmin></ButtonGridAdmin>
     </div>
   );
 }

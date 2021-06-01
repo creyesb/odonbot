@@ -20,7 +20,7 @@ function MenuSider(props) {
   const { Sider } = Layout;
   return (
     <Sider
-      className="estudiante-sider"
+      className="admin-sider"
       collapsed={menuCollapsed}
       theme="dark"
       collapsedWidth={0}

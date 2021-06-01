@@ -73,7 +73,31 @@ class Chatbot extends Component {
   }
 
   async df_event_query(event) {
-    const res = await axios.post(`/xapi/v1/df-event-query`, {
+    /*
+    try {
+      const res = await fetch("/api/v1/df-event-query", {
+        method: "POST",
+        body: JSON.stringify({
+          event,
+          userID: cookies.get("userID"),
+        }),
+      });
+
+      for (let msg of res.event.fulfillmentMessages) {
+        let says = {
+          speaks: "bot",
+          msg: msg,
+        };
+        this.setState({
+          messages: [...this.state.message, says],
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    */
+
+    const res = await axios.post("/api/v1/df-event-query", {
       event,
       userID: cookies.get("userID"),
     });
@@ -86,7 +110,6 @@ class Chatbot extends Component {
         messages: [...this.state.message, says],
       });
     }
-
     //console.log(res);
   }
 
