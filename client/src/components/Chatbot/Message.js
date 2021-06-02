@@ -3,8 +3,6 @@ import { Col, Row, Avatar } from "antd";
 import "./Message.scss";
 import logo from "../../assets/png/botlogo.png";
 export default function Message(props) {
-  // console.log(props.text);
-
   return (
     <div className="scrollable-container">
       {props.speaks === "bot" && (
@@ -30,7 +28,6 @@ export default function Message(props) {
               </Col>
               <Col span={4} className="avatarEstudiante">
                 <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                {props.speaks}
               </Col>
             </div>
           </Row>

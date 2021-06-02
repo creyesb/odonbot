@@ -4,8 +4,6 @@ import { Typography, Input, Row, Avatar, Col, Statistic, Form } from "antd";
 import "./Chatbot.scss";
 import axios from "axios/index";
 import Message from "./Message";
-import logo from "../../assets/png/botlogo.png";
-import { basePath, apiVersion } from "../../api/config";
 /* Para sesiones unicas de usuarios */
 import { v4 as uuid } from "uuid";
 import Cookies from "universal-cookie";
@@ -39,7 +37,6 @@ class Chatbot extends Component {
     if (cookies.get("userID") === undefined) {
       cookies.set("userID", uuid(), { path: "/" });
     }
-    //console.log(cookies.get("userID"));
   }
 
   async df_text_query(queyText) {
@@ -57,10 +54,8 @@ class Chatbot extends Component {
       text: queyText,
       userID: cookies.get("userID"),
     });
-    //console.log(res);
-    //this.storeChat(res);
+
     for (let msg of res.data.fulfillmentMessages) {
-      //console.log(JSON.stringify(msg));
       says = {
         speaks: "bot",
         msg: msg,
@@ -73,30 +68,6 @@ class Chatbot extends Component {
   }
 
   async df_event_query(event) {
-    /*
-    try {
-      const res = await fetch("/api/v1/df-event-query", {
-        method: "POST",
-        body: JSON.stringify({
-          event,
-          userID: cookies.get("userID"),
-        }),
-      });
-
-      for (let msg of res.event.fulfillmentMessages) {
-        let says = {
-          speaks: "bot",
-          msg: msg,
-        };
-        this.setState({
-          messages: [...this.state.message, says],
-        });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-    */
-
     const res = await axios.post("/api/v1/df-event-query", {
       event,
       userID: cookies.get("userID"),
@@ -110,11 +81,9 @@ class Chatbot extends Component {
         messages: [...this.state.message, says],
       });
     }
-    //console.log(res);
   }
 
   storeChat(data) {
-    //console.log(data);
     const result = data;
     createChatAPI(result);
   }
@@ -154,11 +123,6 @@ class Chatbot extends Component {
       return (
         <div key={i}>
           <div className="ant-card-contain-grid">
-            <div style={{ overflow: "auto" }}>
-              <Avatar src={logo} className="avatarBot" />
-              {message.speaks}
-            </div>
-
             <div
               style={{
                 overflow: "auto",

@@ -28,18 +28,21 @@ class QuickReplies extends Component {
   render() {
     return (
       <div>
-        <div style={{ paddingTop: 24 }}>
+        <div style={{ paddingTop: 24, paddingBottom: "5px" }}>
           <Row
             gutter={24}
             style={{
-              paddingBottom: 10,
+              marginLeft: "2px",
+              width: "270px",
+              paddingBottom: "10px",
+              backgroundColor: "#f0f2f5",
+              borderRadius: "15px",
             }}
           >
             <Col span={4}>
               <Avatar src={logo} className="avatarBot" />
-              {this.props.speaks}
             </Col>
-            <Col id="quick-replies">
+            <Col span={20} id="quick-replies">
               {this.props.text && <h1>{this.props.text.stringValue}</h1>}
               {this.renderQuickReplies(this.props.payload)}
             </Col>

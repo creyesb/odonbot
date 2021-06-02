@@ -13,6 +13,7 @@ api.get("/get-user-by-email/:email", UserController.getUserByEmail);
 api.get("/get-user-by-state", UserController.getUserByState);
 api.get("/get-user-by-rol", UserController.getUserByRol);
 api.put("/activateUser/:id", UserController.activateUser);
+//api.put("/updateAvatar/:id", UserController.uploadAvatar);
 api.delete("/deleteUser/:id", UserController.deleteUser);
 
 module.exports = api;

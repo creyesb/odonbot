@@ -8,9 +8,10 @@ export default function PatientPhotoCard(props) {
   return (
     <div className="cardStyle">
       <Card
+        hoverable={true}
         style={{
           width: 220,
-          borderRadius: "20px",
+          borderRadius: "15px",
           margin: "10px",
         }}
         cover={

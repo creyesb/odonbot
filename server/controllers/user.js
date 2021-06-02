@@ -221,7 +221,23 @@ function activateUser(req, res) {
     }
   });
 }
-
+/*
+function uploadAvatar(req, res) {
+  const params = req.params;
+  console.log("uplaod ready");
+  User.findById({ _id: params.id }, (err, userData) => {
+    if (err) {
+      res.status(500).send({ message: "Error del servidor." });
+    } else {
+      if (!userData) {
+        res.status(404).send({ message: "No se ha encontrado usuario" });
+      } else {
+        let user = userData;
+        console.log(user);
+      }
+    }
+  });
+}*/
 module.exports = {
   signUp,
   signIn,
@@ -234,4 +250,5 @@ module.exports = {
   activateUser,
   getUserByEmail,
   getUserByRol,
+  //uploadAvatar,
 };
