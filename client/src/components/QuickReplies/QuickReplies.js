@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Row, Col, Avatar } from "antd";
+import { Row, Col, Avatar } from "antd";
 import QuickReply from "./QuickReply";
 import logo from "../../assets/png/botlogo.png";
 
