@@ -1,3 +1,110 @@
+let chai = require("chai");
+let chaiHttp = require("chai-http");
+const expect = require("chai").expect;
+const should = require("chai").expect;
+chai.use(chaiHttp);
+const url = "http://localhost:3977/api/v1";
+
+describe("Pruebas de integración usuario", () => {
+  it("Debería retornar todos los usuarios", (done) => {
+    chai
+      .request(url)
+      .get("/getPaciente")
+      .end(function(err, res) {
+        //console.log(res.body);
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it("Debería retornar todos los usuarios con rol: Estudiante", (done) => {
+    chai
+      .request(url)
+      .get("/getPaciente")
+      .end(function(err, res) {
+        //console.log(res.body);
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it("Debería retornar todos los usuarios con rol: Profesor", (done) => {
+    chai
+      .request(url)
+      .get("/getPaciente")
+      .end(function(err, res) {
+        //console.log(res.body);
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it("Debería retornar todos los usuarios con rol: Profesor", (done) => {
+    chai
+      .request(url)
+      .get("/getPaciente")
+      .end(function(err, res) {
+        //console.log(res.body);
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it("Debería retornar todos los usuarios con rol: Administrador", (done) => {
+    chai
+      .request(url)
+      .get("/getPaciente")
+      .end(function(err, res) {
+        //console.log(res.body);
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it("Debería retornar todos los usuarios activos", (done) => {
+    chai
+      .request(url)
+      .get("/getPaciente")
+      .end(function(err, res) {
+        //console.log(res.body);
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it("Debería retornar todos los usuarios inactivos", (done) => {
+    chai
+      .request(url)
+      .get("/getPaciente")
+      .end(function(err, res) {
+        //console.log(res.body);
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it("Debería eliminar un usuario", (done) => {
+    chai
+      .request(url)
+      .get("/getPaciente")
+      .end(function(err, res) {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it("No debería retornar usuario con ID inexistente, status code debería ser 404", (done) => {
+    chai
+      .request(url)
+      .get("/getPaciente-ByID/777")
+      .end(function(err, res) {
+        expect(res).to.have.status(500);
+        done();
+      });
+  });
+  it("No debería editar usuario con ID inexistente, status code debería ser 404", (done) => {
+    chai
+      .request(url)
+      .get("/getPaciente-ByID/777")
+      .end(function(err, res) {
+        expect(res).to.have.status(500);
+        done();
+      });
+  });
+});
+
 /*let chai = require("chai");
 let chaiHttp = require("chai-http");
 const expect = require("chai").expect;

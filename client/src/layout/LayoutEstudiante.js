@@ -11,7 +11,7 @@ import LogInForm from "../components/LogInForm/LogInForm";
 export default function LayoutEstudiante(props) {
   const { routes } = props;
   const [menuCollapsed, setMenuCollapsed] = useState(true);
-  const { Header, Footer, Content } = Layout;
+  const { Header, Content } = Layout;
   //Open & close Sider menu
 
   const { user, isLoading } = useAuth();

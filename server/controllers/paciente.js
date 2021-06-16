@@ -26,7 +26,18 @@ function crearPaciente(req, res) {
 
   paciente.save((err, pacienteStored) => {
     if (err) {
-      res.status(500).send({ message: "Paciente ya registrado." });
+      res.status(500).send({ message: "Paciente ya creado." });
+    } else if (
+      !paciente.nombrePaciente ||
+      !paciente.edad ||
+      !paciente.peso ||
+      !paciente.sintomas ||
+      !paciente.motivoConsulta ||
+      !paciente.enfermedadBase ||
+      !paciente.habitos ||
+      !paciente.pacienteState
+    ) {
+      res.status(404).send({ message: "Rellene todos los campos" });
     } else {
       if (!pacienteStored) {
         res.status(404).send({ message: "Error en registrar usuario" });
@@ -41,18 +52,43 @@ function getPaciente(req, res) {
   Paciente.find().then((paciente) => {
     if (!paciente) {
       res.status(404).send({
-        message: "No se ha encotrado usuarios",
+        message: "No se ha encotrado pacientes",
+      });
+    } else if (paciente.length === 0) {
+      res.status(404).send({
+        message: "No se han encotrado pacientes.",
       });
     } else {
       res.status(200).send({ paciente });
     }
   });
 }
+
+function getPacienteById(req, res) {
+  const params = req.params;
+
+  Paciente.findById({ _id: params.id }, (err, pacienteData) => {
+    if (err) {
+      res.status(500).send({ message: "Error en el servidor" });
+    } else {
+      if (!pacienteData) {
+        res.status(404).send({ message: "No se ha encontrado paciente" });
+      } else {
+        res.status(200).send({ pacienteData });
+      }
+    }
+  });
+}
+
 function getPacienteByState(req, res) {
   const query = req.query;
 
   Paciente.find({ pacienteState: query.pacienteState }).then((paciente) => {
     if (!paciente) {
+      res.status(404).send({
+        message: "No se han encotrado pacientes.",
+      });
+    } else if (paciente.length === 0) {
       res.status(404).send({
         message: "No se han encotrado pacientes.",
       });
@@ -101,6 +137,8 @@ function activatePaciente(req, res) {
           res
             .status(200)
             .send({ message: "Paciente desactivado correctanente" });
+        } else {
+          res.status(404).send({ message: "Estado no valido" });
         }
       }
     }
@@ -124,6 +162,7 @@ function deletePaciente(req, res) {
 module.exports = {
   crearPaciente,
   getPaciente,
+  getPacienteById,
   getPacienteByState,
   updatePaciente,
   activatePaciente,

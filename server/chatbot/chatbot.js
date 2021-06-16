@@ -38,9 +38,12 @@ async function textQuery(text, userID, parameters = {}) {
       },
     },
   };
+
   let responses = await sessionsClient.detectIntent(request);
   responses = await self.handleAction(responses);
   let queryResult = responses[0].queryResult;
+  console.log(queryResult.action); //asi se obbtiene el action
+
   saveMessages(queryResult, userID);
 
   //console.log(responses); //responses stores query text(sent message) and fullfilmenttext(answer message)

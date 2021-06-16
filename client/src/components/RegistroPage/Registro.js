@@ -149,7 +149,8 @@ function Registro() {
             name="nombre"
             placeholder="Ingrese su nombre"
             className="register-form__input"
-            value={inputs.nombre}
+            //value={inputs.nombre}
+            value="carlos"
             onChange={inputValidation}
           />
         </Form.Item>

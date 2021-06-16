@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Typography, Input, Row, Avatar, Col, Statistic, Form } from "antd";
+import { Typography, Input, Row, Col, Statistic, Form } from "antd";
 
 import "./Chatbot.scss";
 import axios from "axios/index";
 import Message from "./Message";
+
 /* Para sesiones unicas de usuarios */
 import { v4 as uuid } from "uuid";
 import Cookies from "universal-cookie";
@@ -13,10 +14,10 @@ import QuickReplies from "../QuickReplies/QuickReplies";
 
 /**Store Chat  */
 import { createChatAPI } from "../../api/chat";
+
 const cookies = new Cookies();
 /* Fin de imports para sesiones unicas */
 const { Countdown } = Statistic;
-
 const deadline = Date.now() + 17 * 60 * 60 * 10 * 2 + 1000 * 0; // Moment is also OK
 
 class Chatbot extends Component {
@@ -26,10 +27,10 @@ class Chatbot extends Component {
     super(props);
     this.msg = React.createRef();
     this._handleInputKeyPress = this._handleInputKeyPress.bind(this);
-    this._onClicked = this._onClicked.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this._handleQuickReplyPayload = this._handleQuickReplyPayload.bind(this);
     this.storeChat = this.storeChat.bind(this);
+
     this.state = {
       message: [],
     };
@@ -54,6 +55,7 @@ class Chatbot extends Component {
       text: queyText,
       userID: cookies.get("userID"),
     });
+    // console.log(res.data.action); //Aca obtengo el nombre del intent(Diagnosticar.Diagnosticar-yes)
 
     for (let msg of res.data.fulfillmentMessages) {
       says = {
@@ -63,6 +65,7 @@ class Chatbot extends Component {
       this.setState({ messages: [...this.state.messages, says] });
     }
   }
+
   handleChange(event) {
     this.setState({ text: event.target.value });
   }
@@ -101,8 +104,8 @@ class Chatbot extends Component {
   }
   async componentDidMount() {
     this.df_event_query("Bienvenidos");
-    this.msg.current.focus();
     await this.resolveAfterXseconds(2);
+    this.msg.current.focus();
   }
   renderCards(cards) {
     return cards.map((card, i) => (
@@ -186,12 +189,6 @@ class Chatbot extends Component {
       });
       e.target.value = "";
     }
-  }
-
-  _onClicked(e) {
-    console.log("enviar**");
-    /*this.df_text_query(e.target.value);
-    e.target.value = "";*/
   }
 
   componentDidUpdate() {

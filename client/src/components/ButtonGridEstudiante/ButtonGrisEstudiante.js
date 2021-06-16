@@ -12,10 +12,10 @@ export default function ButtonGridEstudiante() {
           <div key={index}>
             <a href="/estudiante/chat" className="myButtonChatEst">
               <MessageOutlined style={{ marginRight: "6px" }} />
-              Chat
+              Caso
             </a>
             <Link
-              to="/estudiante/evaluaciones"
+              to="/estudiante/show-chat"
               className="myButtonEvaluacionesEst"
             >
               <BookOutlined style={{ marginRight: "6px" }} />

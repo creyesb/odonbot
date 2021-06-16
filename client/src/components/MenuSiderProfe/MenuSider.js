@@ -55,7 +55,7 @@ function MenuSider(props) {
         <Menu.Item key="/profesor/chat">
           <a href={"/profesor/chat"}>
             <MessageOutlined />
-            <span className="nav-text">Chat</span>
+            <span className="nav-text">Solución de Casos</span>
           </a>
         </Menu.Item>
         <Menu.Item key="/profesor/pacientes">

@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "nodemon index.js",
-    "test": "mocha 'test/**/*.js'",
-    "test-with-coverage": "nyc --reporter=text mocha 'test/**/*.js'"
+    "test": "mocha test",
+    "coverage": "nyc npm run test"
   }
 }

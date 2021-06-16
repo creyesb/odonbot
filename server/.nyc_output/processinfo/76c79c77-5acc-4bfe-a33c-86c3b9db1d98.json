@@ -1,0 +1,1 @@
+{"parent":null,"pid":5580,"argv":["/usr/local/bin/node","/usr/local/bin/npm","run","test"],"execArgv":[],"cwd":"/Users/creyesb/Documents/odonbot/server","time":1622959328332,"ppid":5579,"coverageFilename":"/Users/creyesb/Documents/odonbot/server/.nyc_output/76c79c77-5acc-4bfe-a33c-86c3b9db1d98.json","externalId":"","uuid":"76c79c77-5acc-4bfe-a33c-86c3b9db1d98","files":[]}

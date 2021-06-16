@@ -6,7 +6,7 @@ import "./Chat.scss";
 function Chat() {
   return (
     <div className="chat">
-      <Typography className="chat__title">Chat</Typography>
+      <Typography className="chat__title">Caso</Typography>
 
       <Chatbot></Chatbot>
     </div>

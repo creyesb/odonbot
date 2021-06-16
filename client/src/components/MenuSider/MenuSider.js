@@ -6,7 +6,6 @@ import { Layout, Menu } from "antd";
 
 import {
   HomeOutlined,
-  MenuOutlined,
   UserOutlined,
   MessageOutlined,
   BookOutlined,
@@ -40,7 +39,7 @@ function MenuSider(props) {
         <Menu.Item key="/estudiante/chat">
           <a href={"/estudiante/chat"}>
             <MessageOutlined />
-            <span className="nav-text">Chat</span>
+            <span className="nav-text">Solución de casos</span>
           </a>
         </Menu.Item>
         <Menu.Item key="/estudiante/perfil">

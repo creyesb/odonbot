@@ -206,7 +206,7 @@ function activateUser(req, res) {
       res.status(500).send({ message: "Error del servidor" });
     } else {
       if (!usrStored) {
-        res.status(404).send({ message: "No se ha encontrado el Estudiante" });
+        res.status(404).send({ message: "No se ha encontrado el usuario" });
       } else {
         if (usrState === "true") {
           res

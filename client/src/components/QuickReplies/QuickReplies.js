@@ -6,6 +6,7 @@ import logo from "../../assets/png/botlogo.png";
 class QuickReplies extends Component {
   constructor(props) {
     super(props);
+
     this._handleClick = this._handleClick.bind(this);
   }
   _handleClick(event, payload, text) {
@@ -28,7 +29,7 @@ class QuickReplies extends Component {
   render() {
     return (
       <div>
-        <div style={{ paddingTop: 24, paddingBottom: "5px" }}>
+        <div style={{ paddingTop: "2px", paddingBottom: "8px" }}>
           <Row
             gutter={24}
             style={{
@@ -42,8 +43,8 @@ class QuickReplies extends Component {
             <Col span={4}>
               <Avatar src={logo} className="avatarBot" />
             </Col>
-            <Col span={20} id="quick-replies">
-              {this.props.text && <h1>{this.props.text.stringValue}</h1>}
+            <Col span={20} id="quick-replies" style={{ marginTop: "7px" }}>
+              {this.props.text && <p>{this.props.text.stringValue}</p>}
               {this.renderQuickReplies(this.props.payload)}
             </Col>
           </Row>
