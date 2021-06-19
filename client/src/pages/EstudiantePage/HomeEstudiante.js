@@ -35,9 +35,6 @@ function HomeEstudiante() {
               <Calendar fullscreen={false} />
             </div>
           </Row>
-          <Row>
-            <ConsentimientoEstudiante></ConsentimientoEstudiante>
-          </Row>
         </Col>
       </div>
     </Animate>

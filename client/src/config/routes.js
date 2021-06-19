@@ -20,7 +20,8 @@ import ShowChat from "../components/ShowChat/ShowChat";
 // import Admin Components
 import HomeAdmin from "../pages/HomeAdmin/HomeAdmin";
 import Profesor from "../components/Profesor/Profesor";
-
+import LandingPage from "../pages/LandingPage/LandingPage";
+import Consent from "../components/Consent/Consent";
 const routes = [
   {
     path: "/profesor",
@@ -140,8 +141,17 @@ const routes = [
     routes: [
       {
         path: "/",
+        component: LandingPage,
+        exact: true,
+      },
+      {
+        path: "/consent",
+        component: Consent,
+        exact: true,
+      },
+      {
+        path: "/login",
         component: LogInForm,
-        //component: MainLogin,
         exact: true,
       },
       {

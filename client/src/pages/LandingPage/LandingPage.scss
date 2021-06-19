@@ -1,0 +1,111 @@
+@import "../../scss/index.scss";
+
+.landingPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-left: 30px;
+  padding-right: 30px;
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 1s; /* don't forget to set a duration! */
+  background-image: linear-gradient(
+    to right top,
+    #5521dc,
+    #4c47e6,
+    #4b62eb,
+    #5479ed,
+    #668eec,
+    #5e9ff3,
+    #5fb0f6,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
+  );
+
+  &__continueButton {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 5px 24px;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(222, 100%, 95%);
+    border-radius: 6px;
+    box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.3);
+
+    h4 {
+      font-weight: 400;
+      font-size: 18px;
+    }
+  }
+  &__continueButton:hover {
+    margin-top: 30px;
+    padding: 5px 24px;
+    background-color: #ffc93c;
+    color: hsl(223, 80%, 62%);
+    border-radius: 6px;
+
+    animation: pulse 1.75s infinite cubic-bezier(0.66, 0, 0, 1);
+
+    h4 {
+      font-weight: 400;
+      font-size: 18px;
+    }
+  }
+
+  @keyframes pulse {
+    to {
+      box-shadow: 0 0 0 30px rgba(230, 237, 255, 0);
+    }
+  }
+
+  &__content {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+    &__card {
+      box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      margin-top: 30px;
+      background-color: rgb(255, 255, 255);
+      max-width: 600px;
+      min-width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 15px;
+      text-align: justify;
+      &__logoImg {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+        width: 200px;
+      }
+    }
+  }
+}
+
+h1.ant-typography {
+  font-weight: 300;
+  font-size: 50px;
+}
+
+.title {
+  margin-top: 40px;
+  text-shadow: hsl(0, 0%, 100%);
+  text-align: center;
+}
+.imgContainer {
+  padding-bottom: 40px;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttonText {
+  color: whitesmoke;
+  margin-top: 5px;
+}

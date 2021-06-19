@@ -1,0 +1,61 @@
+@import "../../scss/index.scss";
+
+.consentContainer {
+  max-width: 1000px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+  height: 100%;
+}
+
+.buttoncontainer {
+  width: 100%;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonRow {
+  padding-top: 25px;
+  margin-bottom: 25px;
+}
+.checkboxCells {
+  position: relative;
+  margin-top: 20px;
+  max-width: 700px;
+}
+
+.outerCont {
+  background-image: linear-gradient(
+    to right top,
+    #5521dc,
+    #4c47e6,
+    #4b62eb,
+    #5479ed,
+    #668eec,
+    #5e9ff3,
+    #5fb0f6,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
+  );
+}
+
+.bottomContainer {
+  width: 80%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  margin-bottom: 80px;
+  background-color: white;
+  box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.3);
+}

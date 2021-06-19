@@ -1,18 +1,32 @@
 @import "../../scss/index.scss";
 
 .panelConsentimiento {
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgb(198, 227, 241);
-  width: 100%;
-  margin-bottom: 30px;
+  max-width: 800px;
+  margin-top: 20px;
+  padding-top: 40px;
+  min-width: 350px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  margin-bottom: 10px;
+  box-shadow: 15px 15px 10px rgba(0, 0, 0, 0.3);
+
   &__steps {
     text-align: justify;
-    text-decoration: brown;
+    padding-right: 40px;
+    padding-left: 30px;
+  }
+  &__collapse {
+    width: 100%;
   }
 }
 
 .step-space {
   margin-bottom: 15px;
+}
+
+.conContainer {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+  padding-right: 30px;
 }
